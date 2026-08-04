@@ -112,13 +112,13 @@ export default function TailorCV() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-[#14171F]">
+    <div className="min-h-screen bg-white dark:bg-[#14171F] text-[#14171F] dark:text-[#F2F2EE]">
       <Header />
 
       <main className="max-w-6xl mx-auto px-8 py-10">
         <Link
           href="/dashboard"
-          className="inline-flex items-center gap-1.5 text-sm text-[#8A8A82] hover:text-[#2B3A67] transition-colors mb-6"
+          className="inline-flex items-center gap-1.5 text-sm text-[#8A8A82] dark:text-[#9A9A92] hover:text-[#2B3A67] dark:hover:text-[#8FA3E0] transition-colors mb-6"
         >
           <HugeiconsIcon
             icon={ArrowLeft01Icon}
@@ -132,31 +132,32 @@ export default function TailorCV() {
           {/* LEFT: input */}
           <div className="flex flex-col gap-5">
             <div>
-              <label className="text-[13px] font-medium text-[#4A4A44] mb-1 block">
+              <label className="text-[13px] font-medium text-[#4A4A44] dark:text-[#D8D8D2] mb-1 block">
                 Your name
               </label>
-              <p className="text-[12px] text-[#8A8A82] mb-2">
+              <p className="text-[12px] text-[#8A8A82] dark:text-[#9A9A92] mb-2">
                 Used as the header on your downloaded CV.
               </p>
               <input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Your name"
-                className="w-full border border-[#E4E4E0] rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30"
+                className="w-full border border-[#E4E4E0] dark:border-[#2A2E38] rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 dark:focus:ring-[#8FA3E0]/30"
               />
             </div>
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label className="text-[13px] font-medium text-[#4A4A44]">
-                  Your CV <span className="text-red-500">*</span>
+                <label className="text-[13px] font-medium text-[#4A4A44] dark:text-[#D8D8D2]">
+                  Your CV{" "}
+                  <span className="text-red-500 dark:text-red-400">*</span>
                 </label>
-                <div className="flex gap-1 bg-[#FAFAF8] rounded-full p-1 border border-[#E4E4E0]">
+                <div className="flex gap-1 bg-[#FAFAF8] dark:bg-[#1B1F29] rounded-full p-1 border border-[#E4E4E0] dark:border-[#2A2E38]">
                   <button
                     onClick={() => setMode("paste")}
                     className={`text-xs px-3 py-1 rounded-full transition-colors ${
                       mode === "paste"
                         ? "bg-[#2B3A67] text-white"
-                        : "text-[#6B6B63]"
+                        : "text-[#6B6B63] dark:text-[#B5B5AC]"
                     }`}
                   >
                     Paste
@@ -166,7 +167,7 @@ export default function TailorCV() {
                     className={`text-xs px-3 py-1 rounded-full transition-colors ${
                       mode === "upload"
                         ? "bg-[#2B3A67] text-white"
-                        : "text-[#6B6B63]"
+                        : "text-[#6B6B63] dark:text-[#B5B5AC]"
                     }`}
                   >
                     Upload
@@ -181,14 +182,14 @@ export default function TailorCV() {
                     onChange={(e) => setCvText(e.target.value)}
                     placeholder="Paste your CV text here..."
                     rows={11}
-                    className={`w-full rounded-md border p-4 text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 ${
+                    className={`w-full rounded-md border p-4 text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 dark:focus:ring-[#8FA3E0]/30 ${
                       attempted && cvMissing
-                        ? "border-red-400"
-                        : "border-[#E4E4E0] focus:border-[#2B3A67]"
+                        ? "border-red-400 dark:border-red-500"
+                        : "border-[#E4E4E0] dark:border-[#2A2E38] focus:border-[#2B3A67] dark:focus:border-[#8FA3E0]"
                     }`}
                   />
                   {attempted && cvMissing && (
-                    <p className="text-[12px] text-red-600 mt-1">
+                    <p className="text-[12px] text-red-600 dark:text-red-400 mt-1">
                       Add your CV text (paste or upload) before tailoring.
                     </p>
                   )}
@@ -196,7 +197,7 @@ export default function TailorCV() {
               ) : (
                 <div
                   onClick={() => fileInputRef.current?.click()}
-                  className="w-full h-70 rounded-md border-2 border-dashed border-[#E4E4E0] flex flex-col items-center justify-center gap-3 cursor-pointer hover:border-[#2B3A67]/40 transition-colors"
+                  className="w-full h-70 rounded-md border-2 border-dashed border-[#E4E4E0] dark:border-[#2A2E38] flex flex-col items-center justify-center gap-3 cursor-pointer hover:border-[#2B3A67]/40 dark:hover:border-[#8FA3E0]/40 transition-colors"
                 >
                   <input
                     ref={fileInputRef}
@@ -213,7 +214,7 @@ export default function TailorCV() {
                     color="#8A8A82"
                     strokeWidth={1.5}
                   />
-                  <p className="text-sm text-[#6B6B63]">
+                  <p className="text-sm text-[#6B6B63] dark:text-[#B5B5AC]">
                     {fileName || "Click to upload .txt, .docx, or .pdf"}
                   </p>
                   {cvText && fileName && (
@@ -226,10 +227,11 @@ export default function TailorCV() {
             </div>
 
             <div>
-              <label className="text-[13px] font-medium text-[#4A4A44] mb-1 block">
-                The posting <span className="text-red-500">*</span>
+              <label className="text-[13px] font-medium text-[#4A4A44] dark:text-[#D8D8D2] mb-1 block">
+                The posting{" "}
+                <span className="text-red-500 dark:text-red-400">*</span>
               </label>
-              <p className="text-[12px] text-[#8A8A82] mb-2">
+              <p className="text-[12px] text-[#8A8A82] dark:text-[#9A9A92] mb-2">
                 Paste the raw job description text — not a link.
               </p>
               <textarea
@@ -237,14 +239,14 @@ export default function TailorCV() {
                 onChange={(e) => setPosting(e.target.value)}
                 placeholder="Paste the job posting here..."
                 rows={6}
-                className={`w-full rounded-md border p-4 text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 ${
+                className={`w-full rounded-md border p-4 text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 dark:focus:ring-[#8FA3E0]/30 ${
                   attempted && postingMissing
-                    ? "border-red-400"
-                    : "border-[#E4E4E0] focus:border-[#2B3A67]"
+                    ? "border-red-400 dark:border-red-500"
+                    : "border-[#E4E4E0] dark:border-[#2A2E38] focus:border-[#2B3A67] dark:focus:border-[#8FA3E0]"
                 }`}
               />
               {attempted && postingMissing && (
-                <p className="text-[12px] text-red-600 mt-1">
+                <p className="text-[12px] text-red-600 dark:text-red-400 mt-1">
                   Paste the job posting (at least a couple sentences).
                 </p>
               )}
@@ -276,25 +278,27 @@ export default function TailorCV() {
               </span>
               {loading ? "Tailoring..." : "Seal & tailor"}
             </button>
-            {error && <p className="text-sm text-red-600">{error}</p>}
+            {error && (
+              <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+            )}
           </div>
 
           {/* RIGHT: output */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="text-[13px] font-medium text-[#4A4A44]">
+              <label className="text-[13px] font-medium text-[#4A4A44] dark:text-[#D8D8D2]">
                 The tailored CV
               </label>
               {tailored && (
                 <div className="flex items-center gap-3">
                   <button
                     onClick={handleCopy}
-                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] hover:opacity-70"
+                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] dark:text-[#8FA3E0] hover:opacity-70"
                   >
                     <HugeiconsIcon
                       icon={copied ? Tick01Icon : Copy01Icon}
                       size={16}
-                      color="#2B3A67"
+                      color="currentColor"
                       strokeWidth={1.5}
                     />
                     {copied ? "Copied" : "Copy"}
@@ -306,12 +310,12 @@ export default function TailorCV() {
                         subtitle: "Tailored CV",
                       })
                     }
-                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] hover:opacity-70"
+                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] dark:text-[#8FA3E0] hover:opacity-70"
                   >
                     <HugeiconsIcon
                       icon={Download01Icon}
                       size={16}
-                      color="#2B3A67"
+                      color="currentColor"
                       strokeWidth={1.5}
                     />
                     Word
@@ -323,12 +327,12 @@ export default function TailorCV() {
                         subtitle: "Tailored CV",
                       })
                     }
-                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] hover:opacity-70"
+                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] dark:text-[#8FA3E0] hover:opacity-70"
                   >
                     <HugeiconsIcon
                       icon={Download01Icon}
                       size={16}
-                      color="#2B3A67"
+                      color="currentColor"
                       strokeWidth={1.5}
                     />
                     PDF
@@ -336,11 +340,11 @@ export default function TailorCV() {
                 </div>
               )}
             </div>
-            <div className="border border-[#E4E4E0] rounded-md p-6 min-h-105 whitespace-pre-wrap text-[14.5px] leading-[1.7]">
+            <div className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-md p-6 min-h-105 whitespace-pre-wrap text-[14.5px] leading-[1.7]">
               {tailored ? (
                 tailored
               ) : (
-                <span className="text-[#B9B9AF] font-sans text-sm not-italic">
+                <span className="text-[#B9B9AF] dark:text-[#6B6B63] font-sans text-sm not-italic">
                   Your tailored CV will take shape here once you add your CV and
                   a posting.
                 </span>

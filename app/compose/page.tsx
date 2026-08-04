@@ -100,13 +100,13 @@ export default function Compose() {
     .replace(/\s+/g, "-");
 
   return (
-    <div className="min-h-screen bg-white text-[#14171F]">
+    <div className="min-h-screen bg-white dark:bg-[#14171F] text-[#14171F] dark:text-[#F2F2EE]">
       <Header />
 
       <main className="max-w-6xl mx-auto px-8 py-10">
         <Link
           href="/dashboard"
-          className="inline-flex items-center gap-1.5 text-sm text-[#8A8A82] hover:text-[#2B3A67] transition-colors mb-6"
+          className="inline-flex items-center gap-1.5 text-sm text-[#8A8A82] dark:text-[#9A9A92] hover:text-[#2B3A67] dark:hover:text-[#8FA3E0] transition-colors mb-6"
         >
           <HugeiconsIcon
             icon={ArrowLeft01Icon}
@@ -120,10 +120,10 @@ export default function Compose() {
           {/* LEFT: input */}
           <div className="flex flex-col gap-5">
             <div>
-              <label className="text-[13px] font-medium text-[#4A4A44] mb-1 block">
+              <label className="text-[13px] font-medium text-[#4A4A44] dark:text-[#D8D8D2] mb-1 block">
                 The posting
               </label>
-              <p className="text-[12px] text-[#8A8A82] mb-2">
+              <p className="text-[12px] text-[#8A8A82] dark:text-[#9A9A92] mb-2">
                 Paste the raw job description text — not a link.
               </p>
               <textarea
@@ -131,29 +131,29 @@ export default function Compose() {
                 onChange={(e) => setPosting(e.target.value)}
                 placeholder="Paste the job posting here..."
                 rows={11}
-                className={`w-full rounded-md border p-4 text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 ${
+                className={`w-full rounded-md border p-4 text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 dark:focus:ring-[#8FA3E0]/30 ${
                   attempted && postingMissing
-                    ? "border-red-400"
-                    : "border-[#E4E4E0] focus:border-[#2B3A67]"
+                    ? "border-red-400 dark:border-red-500"
+                    : "border-[#E4E4E0] dark:border-[#2A2E38] focus:border-[#2B3A67] dark:focus:border-[#8FA3E0]"
                 }`}
               />
               {attempted && postingMissing && (
-                <p className="text-[12px] text-red-600 mt-1">
+                <p className="text-[12px] text-red-600 dark:text-red-400 mt-1">
                   Paste the job posting (at least a couple sentences).
                 </p>
               )}
             </div>
 
-            <div className="border border-[#E4E4E0] rounded-md">
+            <div className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-md">
               <button
                 onClick={() => setProfileOpen((o) => !o)}
-                className="w-full flex items-center justify-between px-4 py-3 text-[13px] font-medium text-[#4A4A44]"
+                className="w-full flex items-center justify-between px-4 py-3 text-[13px] font-medium text-[#4A4A44] dark:text-[#D8D8D2]"
               >
                 Your voice
                 <HugeiconsIcon
                   icon={ArrowDown01Icon}
                   size={20}
-                  color="#4A4A44"
+                  color="currentColor"
                   strokeWidth={1.5}
                   className={`transition-transform ${profileOpen ? "rotate-180" : ""}`}
                 />
@@ -161,8 +161,9 @@ export default function Compose() {
               {profileOpen && (
                 <div className="px-4 pb-4 flex flex-col gap-3">
                   <div>
-                    <label className="text-[12px] text-[#8A8A82] mb-1 block">
-                      Your name <span className="text-red-500">*</span>
+                    <label className="text-[12px] text-[#8A8A82] dark:text-[#9A9A92] mb-1 block">
+                      Your name{" "}
+                      <span className="text-red-500 dark:text-red-400">*</span>
                     </label>
                     <input
                       value={profile.name}
@@ -170,20 +171,22 @@ export default function Compose() {
                         setProfile({ ...profile, name: e.target.value })
                       }
                       placeholder="Your name"
-                      className={`w-full border rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 ${
+                      className={`w-full border rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 dark:focus:ring-[#8FA3E0]/30 ${
                         attempted && nameMissing
-                          ? "border-red-400"
-                          : "border-[#E4E4E0]"
+                          ? "border-red-400 dark:border-red-500"
+                          : "border-[#E4E4E0] dark:border-[#2A2E38]"
                       }`}
                     />
                     {attempted && nameMissing && (
-                      <p className="text-[12px] text-red-600 mt-1">Required.</p>
+                      <p className="text-[12px] text-red-600 dark:text-red-400 mt-1">
+                        Required.
+                      </p>
                     )}
                   </div>
                   <div>
-                    <label className="text-[12px] text-[#8A8A82] mb-1 block">
+                    <label className="text-[12px] text-[#8A8A82] dark:text-[#9A9A92] mb-1 block">
                       Core skills / expertise{" "}
-                      <span className="text-red-500">*</span>
+                      <span className="text-red-500 dark:text-red-400">*</span>
                     </label>
                     <input
                       value={profile.skills}
@@ -191,14 +194,16 @@ export default function Compose() {
                         setProfile({ ...profile, skills: e.target.value })
                       }
                       placeholder="Core skills / expertise"
-                      className={`w-full border rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 ${
+                      className={`w-full border rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 dark:focus:ring-[#8FA3E0]/30 ${
                         attempted && skillsMissing
-                          ? "border-red-400"
-                          : "border-[#E4E4E0]"
+                          ? "border-red-400 dark:border-red-500"
+                          : "border-[#E4E4E0] dark:border-[#2A2E38]"
                       }`}
                     />
                     {attempted && skillsMissing && (
-                      <p className="text-[12px] text-red-600 mt-1">Required.</p>
+                      <p className="text-[12px] text-red-600 dark:text-red-400 mt-1">
+                        Required.
+                      </p>
                     )}
                   </div>
                   <textarea
@@ -208,7 +213,7 @@ export default function Compose() {
                     }
                     placeholder="A past project worth referencing (optional)"
                     rows={2}
-                    className="w-full border border-[#E4E4E0] rounded px-3 py-2 text-base resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30"
+                    className="w-full border border-[#E4E4E0] dark:border-[#2A2E38] rounded px-3 py-2 text-base resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 dark:focus:ring-[#8FA3E0]/30"
                   />
                   <div className="flex gap-2 flex-wrap">
                     {TONES.map((t) => (
@@ -218,7 +223,7 @@ export default function Compose() {
                         className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
                           profile.tone === t
                             ? "bg-[#2B3A67] text-white border-[#2B3A67]"
-                            : "border-[#E4E4E0] text-[#4A4A44]"
+                            : "border-[#E4E4E0] dark:border-[#2A2E38] text-[#4A4A44] dark:text-[#D8D8D2]"
                         }`}
                       >
                         {t}
@@ -255,25 +260,27 @@ export default function Compose() {
               </span>
               {loading ? "Drafting..." : "Seal & draft"}
             </button>
-            {error && <p className="text-sm text-red-600">{error}</p>}
+            {error && (
+              <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+            )}
           </div>
 
           {/* RIGHT: output */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="text-[13px] font-medium text-[#4A4A44]">
+              <label className="text-[13px] font-medium text-[#4A4A44] dark:text-[#D8D8D2]">
                 The draft
               </label>
               {draft && (
                 <div className="flex items-center gap-3">
                   <button
                     onClick={handleCopy}
-                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] hover:opacity-70"
+                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] dark:text-[#8FA3E0] hover:opacity-70"
                   >
                     <HugeiconsIcon
                       icon={copied ? Tick01Icon : Copy01Icon}
                       size={16}
-                      color="#2B3A67"
+                      color="currentColor"
                       strokeWidth={1.5}
                     />
                     {copied ? "Copied" : "Copy"}
@@ -285,12 +292,12 @@ export default function Compose() {
                         subtitle: "Proposal",
                       })
                     }
-                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] hover:opacity-70"
+                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] dark:text-[#8FA3E0] hover:opacity-70"
                   >
                     <HugeiconsIcon
                       icon={Download01Icon}
                       size={16}
-                      color="#2B3A67"
+                      color="currentColor"
                       strokeWidth={1.5}
                     />
                     Word
@@ -302,12 +309,12 @@ export default function Compose() {
                         subtitle: "Proposal",
                       })
                     }
-                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] hover:opacity-70"
+                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] dark:text-[#8FA3E0] hover:opacity-70"
                   >
                     <HugeiconsIcon
                       icon={Download01Icon}
                       size={16}
-                      color="#2B3A67"
+                      color="currentColor"
                       strokeWidth={1.5}
                     />
                     PDF
@@ -315,11 +322,11 @@ export default function Compose() {
                 </div>
               )}
             </div>
-            <div className="border border-[#E4E4E0] rounded-md p-6 min-h-105 whitespace-pre-wrap text-[15px] leading-[1.75]">
+            <div className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-md p-6 min-h-105 whitespace-pre-wrap text-[15px] leading-[1.75]">
               {draft ? (
                 draft
               ) : (
-                <span className="text-[#B9B9AF] font-sans text-sm not-italic">
+                <span className="text-[#B9B9AF] dark:text-[#6B6B63] font-sans text-sm not-italic">
                   Your proposal will take shape here once you paste a posting
                   and seal it.
                 </span>

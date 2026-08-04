@@ -23,3 +23,15 @@ body {
   color: var(--foreground);
   font-family: var(--font-bricolage), Arial, Helvetica, sans-serif;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+  background-color: #ffffff;
+  color: #14171f;
+}
+
+.dark body {
+  background-color: #14171f;
+  color: #f2f2ee;
+}

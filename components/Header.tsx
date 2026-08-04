@@ -1,30 +1,23 @@
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
-  FeatherIcon,
   Mail01Icon,
   File01Icon,
   Archive01Icon,
 } from "@hugeicons/core-free-icons";
 import Link from "next/link";
 import { Show, SignInButton, UserButton } from "@clerk/nextjs";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Header() {
   return (
     <header className="max-w-6xl mx-auto px-4 sm:px-6 md:px-6 py-4 md:py-6 flex items-center justify-between">
       <Link href="/" className="flex items-center shrink-0">
-        {/* <HugeiconsIcon
-          icon={FeatherIcon}
-          size={28}
-          color="#2B3A67"
-          strokeWidth={1.5}
-          className="md:w-8! md:h-8!"
-        /> */}
         <img
           src="/logo2.png"
           alt="Inkwell logo"
-          className="w-10 h-10 md:w-10 md:h-10"
+          className="w-10 h-10 md:w-10 md:h-10 dark:brightness-125 dark:contrast-125"
         />
-        <span className="text-base md:text-lg font-medium text-[#2B3A67] -ml-3">
+        <span className="text-base md:text-lg font-medium text-[#2B3A67] dark:text-[#8FA3E0] -ml-3">
           Inkwell
         </span>
       </Link>
@@ -35,7 +28,7 @@ export default function Header() {
             <Link
               href="/compose"
               title="Proposal"
-              className="flex items-center gap-1.5 text-sm font-medium text-[#4A4A44] hover:text-[#2B3A67] transition-colors p-2 md:p-0 rounded-full hover:bg-[#2B3A67]/5 md:hover:bg-transparent"
+              className="flex items-center gap-1.5 text-sm font-medium text-[#4A4A44] dark:text-[#D8D8D2] hover:text-[#2B3A67] dark:hover:text-[#8FA3E0] transition-colors p-2 md:p-0 rounded-full hover:bg-[#2B3A67]/5 dark:hover:bg-[#8FA3E0]/10 md:hover:bg-transparent"
             >
               <HugeiconsIcon
                 icon={Mail01Icon}
@@ -48,7 +41,7 @@ export default function Header() {
             <Link
               href="/cv"
               title="CV"
-              className="flex items-center gap-1.5 text-sm font-medium text-[#4A4A44] hover:text-[#2B3A67] transition-colors p-2 md:p-0 rounded-full hover:bg-[#2B3A67]/5 md:hover:bg-transparent"
+              className="flex items-center gap-1.5 text-sm font-medium text-[#4A4A44] dark:text-[#D8D8D2] hover:text-[#2B3A67] dark:hover:text-[#8FA3E0] transition-colors p-2 md:p-0 rounded-full hover:bg-[#2B3A67]/5 dark:hover:bg-[#8FA3E0]/10 md:hover:bg-transparent"
             >
               <HugeiconsIcon
                 icon={File01Icon}
@@ -61,7 +54,7 @@ export default function Header() {
             <Link
               href="/dashboard"
               title="Archive"
-              className="flex items-center gap-1.5 text-sm font-medium text-[#4A4A44] hover:text-[#2B3A67] transition-colors p-2 md:p-0 rounded-full hover:bg-[#2B3A67]/5 md:hover:bg-transparent"
+              className="flex items-center gap-1.5 text-sm font-medium text-[#4A4A44] dark:text-[#D8D8D2] hover:text-[#2B3A67] dark:hover:text-[#8FA3E0] transition-colors p-2 md:p-0 rounded-full hover:bg-[#2B3A67]/5 dark:hover:bg-[#8FA3E0]/10 md:hover:bg-transparent"
             >
               <HugeiconsIcon
                 icon={Archive01Icon}
@@ -72,10 +65,12 @@ export default function Header() {
               <span className="hidden md:inline">Archive</span>
             </Link>
           </nav>
+          <ThemeToggle />
           <UserButton />
         </Show>
 
         <Show when="signed-out">
+          <ThemeToggle />
           <SignInButton mode="modal" fallbackRedirectUrl="/dashboard">
             <button className="inline-flex items-center gap-2.5 rounded-full pl-4 pr-5 md:pr-6 py-2.5 md:py-3 text-sm font-medium text-white bg-[#2B3A67] hover:opacity-90 transition-opacity">
               Sign in

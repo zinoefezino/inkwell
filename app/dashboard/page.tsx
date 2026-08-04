@@ -84,14 +84,14 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-[#14171F]">
+    <div className="min-h-screen bg-white dark:bg-[#14171F] text-[#14171F] dark:text-[#F2F2EE]">
       <Header />
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 md:py-10">
         {/* TITLE ROW */}
         <div className="mb-5 md:mb-8">
           <h1 className="text-xl md:text-2xl font-medium">Your archive</h1>
-          <p className="text-sm text-[#8A8A82] mt-1">
+          <p className="text-sm text-[#8A8A82] dark:text-[#9A9A92] mt-1">
             {generations.length === 0
               ? "Every proposal and CV you've sealed will show up here."
               : `${generations.length} sealed so far.`}
@@ -114,7 +114,7 @@ export default function Dashboard() {
           </Link>
           <Link
             href="/cv"
-            className="flex items-center gap-1.5 text-sm font-medium text-[#2B3A67] border border-[#2B3A67] rounded-full pl-3.5 pr-4 py-2 hover:bg-[#2B3A67]/5 transition-colors"
+            className="flex items-center gap-1.5 text-sm font-medium text-[#2B3A67] dark:text-[#8FA3E0] border border-[#2B3A67] dark:border-[#8FA3E0] rounded-full pl-3.5 pr-4 py-2 hover:bg-[#2B3A67]/5 dark:hover:bg-[#8FA3E0]/10 transition-colors"
           >
             <HugeiconsIcon
               icon={PlusSignIcon}
@@ -128,7 +128,7 @@ export default function Dashboard() {
 
         {/* FILTER PILLS — horizontally scrollable, never wraps/clips */}
         <div className="mb-6 md:mb-8 -mx-4 sm:-mx-6 md:mx-0 px-4 sm:px-6 md:px-0 overflow-x-auto">
-          <div className="flex gap-1 bg-[#FAFAF8] rounded-full p-1 border border-[#E4E4E0] w-fit">
+          <div className="flex gap-1 bg-[#FAFAF8] dark:bg-[#1B1F29] rounded-full p-1 border border-[#E4E4E0] dark:border-[#2A2E38] w-fit">
             {FILTERS.map((f) => {
               const count =
                 f.value === "all"
@@ -141,13 +141,15 @@ export default function Dashboard() {
                   className={`text-sm px-4 py-1.5 rounded-full transition-colors flex items-center gap-1.5 whitespace-nowrap ${
                     filter === f.value
                       ? "bg-[#2B3A67] text-white"
-                      : "text-[#6B6B63] hover:text-[#2B3A67]"
+                      : "text-[#6B6B63] dark:text-[#B5B5AC] hover:text-[#2B3A67] dark:hover:text-[#8FA3E0]"
                   }`}
                 >
                   {f.label}
                   <span
                     className={
-                      filter === f.value ? "text-white/70" : "text-[#B9B9AF]"
+                      filter === f.value
+                        ? "text-white/70"
+                        : "text-[#B9B9AF] dark:text-[#6B6B63]"
                     }
                   >
                     {count}
@@ -159,24 +161,24 @@ export default function Dashboard() {
         </div>
 
         {loading ? (
-          <div className="flex items-center justify-center py-24 text-[#8A8A82]">
+          <div className="flex items-center justify-center py-24 text-[#8A8A82] dark:text-[#9A9A92]">
             <HugeiconsIcon
               icon={Loading03Icon}
               size={28}
-              color="#8A8A82"
+              color="currentColor"
               strokeWidth={1.5}
               className="animate-spin"
             />
           </div>
         ) : filtered.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16 md:py-24 px-4 text-center border border-dashed border-[#E4E4E0] rounded-lg">
+          <div className="flex flex-col items-center justify-center py-16 md:py-24 px-4 text-center border border-dashed border-[#E4E4E0] dark:border-[#2A2E38] rounded-lg">
             <HugeiconsIcon
               icon={InboxIcon}
               size={36}
               color="#B9B9AF"
               strokeWidth={1.5}
             />
-            <p className="text-[#8A8A82] text-sm mt-4 max-w-xs">
+            <p className="text-[#8A8A82] dark:text-[#9A9A92] text-sm mt-4 max-w-xs">
               {filter === "all"
                 ? "Nothing here yet. Once you seal a proposal or a CV, it'll show up in this archive."
                 : `No ${filter === "proposal" ? "proposals" : "CVs"} sealed yet.`}
@@ -190,7 +192,7 @@ export default function Dashboard() {
               </Link>
               <Link
                 href="/cv"
-                className="text-sm font-medium text-[#2B3A67] border border-[#2B3A67] rounded-full px-5 py-2.5 hover:bg-[#2B3A67]/5 transition-colors text-center"
+                className="text-sm font-medium text-[#2B3A67] dark:text-[#8FA3E0] border border-[#2B3A67] dark:border-[#8FA3E0] rounded-full px-5 py-2.5 hover:bg-[#2B3A67]/5 dark:hover:bg-[#8FA3E0]/10 transition-colors text-center"
               >
                 New CV
               </Link>
@@ -210,12 +212,12 @@ export default function Dashboard() {
                   onClick={() => setSelectedId(g._id)}
                   className={`relative text-left rounded-md border p-4 pl-5 transition-all ${
                     selectedId === g._id
-                      ? "border-[#2B3A67] bg-[#2B3A67]/[0.03] shadow-sm"
-                      : "border-[#E4E4E0] hover:border-[#2B3A67]/30 hover:bg-[#FAFAF8]"
+                      ? "border-[#2B3A67] dark:border-[#8FA3E0] bg-[#2B3A67]/3 dark:bg-[#8FA3E0]/10 shadow-sm"
+                      : "border-[#E4E4E0] dark:border-[#2A2E38] hover:border-[#2B3A67]/30 dark:hover:border-[#8FA3E0]/30 hover:bg-[#FAFAF8] dark:hover:bg-[#1B1F29]"
                   }`}
                 >
                   {selectedId === g._id && (
-                    <span className="absolute left-0 top-3 bottom-3 w-[3px] rounded-full bg-[#C9A227] hidden md:block" />
+                    <span className="absolute left-0 top-3 bottom-3 w-0.75 rounded-full bg-[#C9A227] hidden md:block" />
                   )}
                   <div className="flex items-center gap-2 mb-1.5">
                     <HugeiconsIcon
@@ -224,12 +226,12 @@ export default function Dashboard() {
                       color="#2B3A67"
                       strokeWidth={1.5}
                     />
-                    <span className="text-[10.5px] tracking-wide uppercase text-[#8A8A82]">
+                    <span className="text-[10.5px] tracking-wide uppercase text-[#8A8A82] dark:text-[#9A9A92]">
                       {g.type === "proposal" ? "proposal" : "cv"} ·{" "}
                       {formatDate(g.createdAt)}
                     </span>
                   </div>
-                  <p className="text-[13px] leading-snug text-[#4A4A44]">
+                  <p className="text-[13px] leading-snug text-[#4A4A44] dark:text-[#D8D8D2]">
                     {excerpt(g.posting)}
                   </p>
                 </button>
@@ -243,12 +245,12 @@ export default function Dashboard() {
                   {/* Back button — mobile only */}
                   <button
                     onClick={() => setSelectedId(null)}
-                    className="flex items-center gap-1.5 text-sm text-[#2B3A67] mb-4 md:hidden -ml-1 py-1"
+                    className="flex items-center gap-1.5 text-sm text-[#2B3A67] dark:text-[#8FA3E0] mb-4 md:hidden -ml-1 py-1"
                   >
                     <HugeiconsIcon
                       icon={ArrowLeft01Icon}
                       size={18}
-                      color="#2B3A67"
+                      color="currentColor"
                       strokeWidth={1.5}
                     />
                     Back to archive
@@ -256,30 +258,30 @@ export default function Dashboard() {
 
                   <div className="flex items-start justify-between mb-4 gap-4">
                     <div className="min-w-0">
-                      <span className="text-[11px] tracking-wide uppercase text-[#8A8A82] block mb-1.5">
+                      <span className="text-[11px] tracking-wide uppercase text-[#8A8A82] dark:text-[#9A9A92] block mb-1.5">
                         {selected.type === "proposal"
                           ? "the proposal"
                           : "the tailored cv"}{" "}
                         · {formatDate(selected.createdAt)}
                       </span>
-                      <p className="text-[12.5px] text-[#8A8A82] leading-relaxed">
+                      <p className="text-[12.5px] text-[#8A8A82] dark:text-[#9A9A92] leading-relaxed">
                         {excerpt(selected.posting, 160)}
                       </p>
                     </div>
                     <button
                       onClick={handleCopy}
-                      className="flex items-center gap-2 text-xs text-[#2B3A67] hover:opacity-70 shrink-0 mt-1 py-1"
+                      className="flex items-center gap-2 text-xs text-[#2B3A67] dark:text-[#8FA3E0] hover:opacity-70 shrink-0 mt-1 py-1"
                     >
                       <HugeiconsIcon
                         icon={copied ? Tick01Icon : Copy01Icon}
                         size={18}
-                        color="#2B3A67"
+                        color="currentColor"
                         strokeWidth={1.5}
                       />
                       {copied ? "Copied" : "Copy"}
                     </button>
                   </div>
-                  <div className="border border-[#E4E4E0] rounded-md p-4 md:p-6 min-h-[300px] md:min-h-[380px] whitespace-pre-wrap text-sm md:text-[14.5px] leading-[1.7]">
+                  <div className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-md p-4 md:p-6 min-h-75 md:min-h-95 whitespace-pre-wrap text-sm md:text-[14.5px] leading-[1.7]">
                     {selected.output}
                   </div>
                 </>
