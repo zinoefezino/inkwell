@@ -5,6 +5,7 @@ import {
   FeatherIcon,
   Mail01Icon,
   File01Icon,
+  ArrowRight01Icon,
 } from "@hugeicons/core-free-icons";
 import Link from "next/link";
 import Header from "@/components/Header";
@@ -66,13 +67,14 @@ export default async function Home() {
           <span className="text-[11px] tracking-[0.15em] uppercase text-[#8A8A82]">
             for freelancers & job seekers
           </span>
-          <h1 className="text-[2.75rem] md:text-[3.5rem] leading-[1.05] font-medium mt-4 mb-6">
-            Every application deserves work that sounds like you.
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 leading-[1.1] mb-6">
+            Tailored proposals and CVs, in{" "}
+            <span className="text-[#2B3A67]">seconds.</span>
           </h1>
           <p className="text-[17px] leading-relaxed text-[#4A4A44] max-w-md mb-8">
-            Inkwell reads the job, remembers your voice, and tailors both your
-            proposal and your CV to it — because it did the reading so you
-            didn&apos;t have to.
+            Inkwell reorders and re-emphasizes your existing experience so every
+            proposal and every CV leads with what you do have, not what you
+            don&apos;t.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
@@ -195,22 +197,19 @@ export default async function Home() {
       </section>
 
       {/* WHY */}
-      <section className="border-t border-[#E4E4E0]">
-        <div className="max-w-6xl mx-auto px-8 py-20 grid md:grid-cols-[auto_1fr] gap-6 items-start">
-          <span className="text-[80px] leading-none text-[#C9A227]">
-            &ldquo;
+      <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-6 text-center space-y-6 relative z-10">
+          <span className="text-[80px] leading-none text-[#2B3A67] font-serif block opacity-50 select-none">
+            “
           </span>
-          <div>
-            <h2 className="text-2xl md:text-3xl font-medium mb-4 max-w-xl">
-              The tenth application of the day shouldn&apos;t sound like the
-              first.
-            </h2>
-            <p className="text-[15.5px] leading-relaxed text-[#6B6B63] max-w-lg">
-              Inkwell never dwells on what you don&apos;t have — it leads with
-              what you do, drawn from your own work, so every proposal and every
-              CV still sounds like you.
-            </p>
-          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight max-w-2xl mx-auto -mt-12">
+            Your tenth application of the day should never sound like your
+            first.
+          </h2>
+          <p className="text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+            Inkwell eliminates application fatigue by automatically framing your
+            proven history around what each client needs.
+          </p>
         </div>
       </section>
 
@@ -219,9 +218,6 @@ export default async function Home() {
         <div className="max-w-6xl mx-auto px-8 py-20">
           <div className="flex items-end justify-between mb-10">
             <h2 className="text-2xl font-medium">Questions</h2>
-            <span className="text-[11px] tracking-[0.15em] uppercase text-[#8A8A82]">
-              before you seal your first one
-            </span>
           </div>
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
             {FAQS.map((f) => (
@@ -237,43 +233,43 @@ export default async function Home() {
       </section>
 
       {/* CLOSING CTA */}
-      <section className="px-8 py-16">
-        <div className="max-w-2xl mx-auto rounded-2xl bg-[#2B3A67] px-8 py-14 text-center">
-          <h2 className="text-2xl md:text-3xl font-medium mb-6 text-white">
-            Stop starting from a blank page.
-          </h2>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <Link
-              href="/compose"
-              className="inline-flex items-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-[#2B3A67] bg-white hover:opacity-90 transition-opacity"
-            >
-              <HugeiconsIcon
-                icon={Mail01Icon}
-                size={18}
-                color="#2B3A67"
-                strokeWidth={1.5}
-              />
-              Tailor a proposal
-            </Link>
-            <Link
-              href="/cv"
-              className="inline-flex items-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-white border border-white/40 hover:bg-white/10 transition-colors"
-            >
-              <HugeiconsIcon
-                icon={File01Icon}
-                size={18}
-                color="#ffffff"
-                strokeWidth={1.5}
-              />
-              Tailor a CV
-            </Link>
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="rounded-3xl bg-[#2B3A67] px-8 py-16 text-center text-white shadow-xl shadow-[#2B3A67]/10 space-y-6">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+              Stop starting from a blank page.
+            </h2>
+            <p className="text-slate-300 text-sm sm:text-base max-w-md mx-auto">
+              Transform your raw experience into targeted proposals and
+              structured CVs in seconds.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center pt-2">
+              <Link
+                href="/compose"
+                className="inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-[#2B3A67] bg-white hover:bg-slate-100 transition-colors shadow-sm"
+              >
+                Tailor a Proposal
+                <HugeiconsIcon
+                  icon={ArrowRight01Icon}
+                  size={16}
+                  color="#2B3A67"
+                  strokeWidth={2}
+                />
+              </Link>
+              <Link
+                href="/cv"
+                className="inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-white border border-white/30 hover:bg-white/10 transition-colors"
+              >
+                Tailor a CV
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
       <footer className="max-w-6xl mx-auto px-8 py-8 flex items-center justify-between text-[13px] text-[#8A8A82]">
         <span>inkwell</span>
-        <span>© 2026 · built for people who tailor</span>
+        <span>© {new Date().getFullYear()} · Tailored proposals & CVs</span>
       </footer>
     </div>
   );

@@ -11,13 +11,18 @@ import { Show, SignInButton, UserButton } from "@clerk/nextjs";
 export default function Header() {
   return (
     <header className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-4 md:py-6 flex items-center justify-between">
-      <Link href="/" className="flex items-center gap-2 md:gap-3 shrink-0">
-        <HugeiconsIcon
+      <Link href="/" className="flex items-center shrink-0">
+        {/* <HugeiconsIcon
           icon={FeatherIcon}
           size={28}
           color="#2B3A67"
           strokeWidth={1.5}
           className="md:w-8! md:h-8!"
+        /> */}
+        <img
+          src="/logo2.png"
+          alt="Inkwell logo"
+          className="w-20 h-20 md:w-20 md:h-20"
         />
         <span className="text-base md:text-lg font-medium text-[#2B3A67]">
           Inkwell
