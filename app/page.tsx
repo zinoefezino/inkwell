@@ -64,9 +64,9 @@ export default async function Home() {
       {/* HERO */}
       <section className="max-w-6xl mx-auto px-8 pt-16 pb-20 grid md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
         <div>
-          <span className="text-[11px] tracking-[0.15em] uppercase text-[#8A8A82]">
+          {/* <span className="text-[11px] tracking-[0.15em] uppercase text-[#8A8A82]">
             for freelancers & job seekers
-          </span>
+          </span> */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 leading-[1.1] mb-6">
             Tailored proposals and CVs, in{" "}
             <span className="text-[#2B3A67]">seconds.</span>
@@ -197,7 +197,7 @@ export default async function Home() {
       </section>
 
       {/* WHY */}
-      <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
+      <section className="py-20 bg-[#FAFAF8] relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-6 text-center space-y-6 relative z-10">
           <span className="text-[80px] leading-none text-[#2B3A67] font-serif block opacity-50 select-none">
             “
@@ -206,7 +206,7 @@ export default async function Home() {
             Your tenth application of the day should never sound like your
             first.
           </h2>
-          <p className="text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+          <p className="text-[#6B6B63] text-base max-w-xl mx-auto leading-relaxed">
             Inkwell eliminates application fatigue by automatically framing your
             proven history around what each client needs.
           </p>
