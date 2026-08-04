@@ -239,13 +239,6 @@ export default async function Home() {
       {/* CLOSING CTA */}
       <section className="px-8 py-16">
         <div className="max-w-2xl mx-auto rounded-2xl bg-[#2B3A67] px-8 py-14 text-center">
-          <HugeiconsIcon
-            icon={FeatherIcon}
-            size={32}
-            color="#C9A227"
-            strokeWidth={1.5}
-            className="mx-auto mb-5"
-          />
           <h2 className="text-2xl md:text-3xl font-medium mb-6 text-white">
             Stop starting from a blank page.
           </h2>

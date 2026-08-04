@@ -131,7 +131,7 @@ export default function Compose() {
                 onChange={(e) => setPosting(e.target.value)}
                 placeholder="Paste the job posting here..."
                 rows={11}
-                className={`w-full rounded-md border p-4 text-[13.5px] leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 ${
+                className={`w-full rounded-md border p-4 text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 ${
                   attempted && postingMissing
                     ? "border-red-400"
                     : "border-[#E4E4E0] focus:border-[#2B3A67]"
@@ -170,7 +170,7 @@ export default function Compose() {
                         setProfile({ ...profile, name: e.target.value })
                       }
                       placeholder="Your name"
-                      className={`w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 ${
+                      className={`w-full border rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 ${
                         attempted && nameMissing
                           ? "border-red-400"
                           : "border-[#E4E4E0]"
@@ -191,7 +191,7 @@ export default function Compose() {
                         setProfile({ ...profile, skills: e.target.value })
                       }
                       placeholder="Core skills / expertise"
-                      className={`w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 ${
+                      className={`w-full border rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 ${
                         attempted && skillsMissing
                           ? "border-red-400"
                           : "border-[#E4E4E0]"
@@ -208,7 +208,7 @@ export default function Compose() {
                     }
                     placeholder="A past project worth referencing (optional)"
                     rows={2}
-                    className="w-full border border-[#E4E4E0] rounded px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30"
+                    className="w-full border border-[#E4E4E0] rounded px-3 py-2 text-base resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30"
                   />
                   <div className="flex gap-2 flex-wrap">
                     {TONES.map((t) => (
@@ -315,7 +315,7 @@ export default function Compose() {
                 </div>
               )}
             </div>
-            <div className="border border-[#E4E4E0] rounded-md p-6 min-h-[420px] whitespace-pre-wrap text-[15px] leading-[1.75]">
+            <div className="border border-[#E4E4E0] rounded-md p-6 min-h-105 whitespace-pre-wrap text-[15px] leading-[1.75]">
               {draft ? (
                 draft
               ) : (

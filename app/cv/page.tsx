@@ -142,7 +142,7 @@ export default function TailorCV() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Your name"
-                className="w-full border border-[#E4E4E0] rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30"
+                className="w-full border border-[#E4E4E0] rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30"
               />
             </div>
             <div>
@@ -181,7 +181,7 @@ export default function TailorCV() {
                     onChange={(e) => setCvText(e.target.value)}
                     placeholder="Paste your CV text here..."
                     rows={11}
-                    className={`w-full rounded-md border p-4 text-[13.5px] leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 ${
+                    className={`w-full rounded-md border p-4 text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 ${
                       attempted && cvMissing
                         ? "border-red-400"
                         : "border-[#E4E4E0] focus:border-[#2B3A67]"
@@ -196,7 +196,7 @@ export default function TailorCV() {
               ) : (
                 <div
                   onClick={() => fileInputRef.current?.click()}
-                  className="w-full h-[280px] rounded-md border-2 border-dashed border-[#E4E4E0] flex flex-col items-center justify-center gap-3 cursor-pointer hover:border-[#2B3A67]/40 transition-colors"
+                  className="w-full h-70 rounded-md border-2 border-dashed border-[#E4E4E0] flex flex-col items-center justify-center gap-3 cursor-pointer hover:border-[#2B3A67]/40 transition-colors"
                 >
                   <input
                     ref={fileInputRef}
@@ -237,7 +237,7 @@ export default function TailorCV() {
                 onChange={(e) => setPosting(e.target.value)}
                 placeholder="Paste the job posting here..."
                 rows={6}
-                className={`w-full rounded-md border p-4 text-[13.5px] leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 ${
+                className={`w-full rounded-md border p-4 text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 ${
                   attempted && postingMissing
                     ? "border-red-400"
                     : "border-[#E4E4E0] focus:border-[#2B3A67]"
@@ -336,7 +336,7 @@ export default function TailorCV() {
                 </div>
               )}
             </div>
-            <div className="border border-[#E4E4E0] rounded-md p-6 min-h-[420px] whitespace-pre-wrap text-[14.5px] leading-[1.7]">
+            <div className="border border-[#E4E4E0] rounded-md p-6 min-h-105 whitespace-pre-wrap text-[14.5px] leading-[1.7]">
               {tailored ? (
                 tailored
               ) : (
