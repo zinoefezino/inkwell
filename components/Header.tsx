@@ -10,23 +10,27 @@ import { Show, SignInButton, UserButton } from "@clerk/nextjs";
 
 export default function Header() {
   return (
-    <header className="max-w-6xl mx-auto px-8 py-6 flex items-center justify-between">
-      <Link href="/" className="flex items-center gap-3">
+    <header className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-4 md:py-6 flex items-center justify-between">
+      <Link href="/" className="flex items-center gap-2 md:gap-3 shrink-0">
         <HugeiconsIcon
           icon={FeatherIcon}
-          size={32}
+          size={28}
           color="#2B3A67"
           strokeWidth={1.5}
+          className="md:w-8! md:h-8!"
         />
-        <span className="text-lg font-medium text-[#2B3A67]">Inkwell</span>
+        <span className="text-base md:text-lg font-medium text-[#2B3A67]">
+          Inkwell
+        </span>
       </Link>
 
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-3 md:gap-6">
         <Show when="signed-in">
-          <nav className="flex items-center gap-5">
+          <nav className="flex items-center gap-1 md:gap-5">
             <Link
               href="/compose"
-              className="flex items-center gap-1.5 text-sm font-medium text-[#4A4A44] hover:text-[#2B3A67] transition-colors"
+              title="Proposal"
+              className="flex items-center gap-1.5 text-sm font-medium text-[#4A4A44] hover:text-[#2B3A67] transition-colors p-2 md:p-0 rounded-full hover:bg-[#2B3A67]/5 md:hover:bg-transparent"
             >
               <HugeiconsIcon
                 icon={Mail01Icon}
@@ -34,11 +38,12 @@ export default function Header() {
                 color="currentColor"
                 strokeWidth={1.5}
               />
-              Proposal
+              <span className="hidden md:inline">Proposal</span>
             </Link>
             <Link
               href="/cv"
-              className="flex items-center gap-1.5 text-sm font-medium text-[#4A4A44] hover:text-[#2B3A67] transition-colors"
+              title="CV"
+              className="flex items-center gap-1.5 text-sm font-medium text-[#4A4A44] hover:text-[#2B3A67] transition-colors p-2 md:p-0 rounded-full hover:bg-[#2B3A67]/5 md:hover:bg-transparent"
             >
               <HugeiconsIcon
                 icon={File01Icon}
@@ -46,11 +51,12 @@ export default function Header() {
                 color="currentColor"
                 strokeWidth={1.5}
               />
-              CV
+              <span className="hidden md:inline">CV</span>
             </Link>
             <Link
               href="/dashboard"
-              className="flex items-center gap-1.5 text-sm font-medium text-[#4A4A44] hover:text-[#2B3A67] transition-colors"
+              title="Archive"
+              className="flex items-center gap-1.5 text-sm font-medium text-[#4A4A44] hover:text-[#2B3A67] transition-colors p-2 md:p-0 rounded-full hover:bg-[#2B3A67]/5 md:hover:bg-transparent"
             >
               <HugeiconsIcon
                 icon={Archive01Icon}
@@ -58,7 +64,7 @@ export default function Header() {
                 color="currentColor"
                 strokeWidth={1.5}
               />
-              Archive
+              <span className="hidden md:inline">Archive</span>
             </Link>
           </nav>
           <UserButton />
@@ -66,7 +72,7 @@ export default function Header() {
 
         <Show when="signed-out">
           <SignInButton mode="modal" fallbackRedirectUrl="/dashboard">
-            <button className="inline-flex items-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-white bg-[#2B3A67] hover:opacity-90 transition-opacity">
+            <button className="inline-flex items-center gap-2.5 rounded-full pl-4 pr-5 md:pr-6 py-2.5 md:py-3 text-sm font-medium text-white bg-[#2B3A67] hover:opacity-90 transition-opacity">
               Sign in
             </button>
           </SignInButton>

@@ -21,7 +21,9 @@ export default function RootLayout({
   return (
     <ClerkProvider afterSignOutUrl="/">
       <html lang="en" className={`${bricolage.variable} h-full antialiased`}>
-        <body className="min-h-full flex flex-col">{children}</body>
+        <body suppressHydrationWarning className="min-h-full flex flex-col">
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );

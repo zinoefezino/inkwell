@@ -10,6 +10,7 @@ import {
   Loading03Icon,
   InboxIcon,
   PlusSignIcon,
+  ArrowLeft01Icon,
 } from "@hugeicons/core-free-icons";
 import Link from "next/link";
 import Header from "@/components/Header";
@@ -86,69 +87,74 @@ export default function Dashboard() {
     <div className="min-h-screen bg-white text-[#14171F]">
       <Header />
 
-      <main className="max-w-6xl mx-auto px-8 py-10">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-2xl font-medium">Your archive</h1>
-            <p className="text-sm text-[#8A8A82] mt-1">
-              {generations.length === 0
-                ? "Every proposal and CV you've sealed will show up here."
-                : `${generations.length} sealed so far.`}
-            </p>
-          </div>
-          <div className="flex items-center gap-3">
-            <Link
-              href="/compose"
-              className="flex items-center gap-1.5 text-sm font-medium text-white bg-[#2B3A67] rounded-full pl-3.5 pr-4 py-2 hover:opacity-90 transition-opacity"
-            >
-              <HugeiconsIcon
-                icon={PlusSignIcon}
-                size={16}
-                color="#ffffff"
-                strokeWidth={2}
-              />
-              Proposal
-            </Link>
-            <Link
-              href="/cv"
-              className="flex items-center gap-1.5 text-sm font-medium text-[#2B3A67] border border-[#2B3A67] rounded-full pl-3.5 pr-4 py-2 hover:bg-[#2B3A67]/5 transition-colors"
-            >
-              <HugeiconsIcon
-                icon={PlusSignIcon}
-                size={16}
-                color="#2B3A67"
-                strokeWidth={2}
-              />
-              CV
-            </Link>
-            <div className="flex gap-1 bg-[#FAFAF8] rounded-full p-1 border border-[#E4E4E0] ml-2">
-              {FILTERS.map((f) => {
-                const count =
-                  f.value === "all"
-                    ? generations.length
-                    : generations.filter((g) => g.type === f.value).length;
-                return (
-                  <button
-                    key={f.value}
-                    onClick={() => setFilter(f.value)}
-                    className={`text-sm px-4 py-1.5 rounded-full transition-colors flex items-center gap-1.5 ${
-                      filter === f.value
-                        ? "bg-[#2B3A67] text-white"
-                        : "text-[#6B6B63] hover:text-[#2B3A67]"
-                    }`}
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 md:py-10">
+        {/* TITLE ROW */}
+        <div className="mb-5 md:mb-8">
+          <h1 className="text-xl md:text-2xl font-medium">Your archive</h1>
+          <p className="text-sm text-[#8A8A82] mt-1">
+            {generations.length === 0
+              ? "Every proposal and CV you've sealed will show up here."
+              : `${generations.length} sealed so far.`}
+          </p>
+        </div>
+
+        {/* ACTIONS ROW — wraps on mobile instead of overflowing */}
+        <div className="flex items-center gap-2 flex-wrap mb-3 md:mb-8">
+          <Link
+            href="/compose"
+            className="flex items-center gap-1.5 text-sm font-medium text-white bg-[#2B3A67] rounded-full pl-3.5 pr-4 py-2 hover:opacity-90 transition-opacity"
+          >
+            <HugeiconsIcon
+              icon={PlusSignIcon}
+              size={16}
+              color="#ffffff"
+              strokeWidth={2}
+            />
+            Proposal
+          </Link>
+          <Link
+            href="/cv"
+            className="flex items-center gap-1.5 text-sm font-medium text-[#2B3A67] border border-[#2B3A67] rounded-full pl-3.5 pr-4 py-2 hover:bg-[#2B3A67]/5 transition-colors"
+          >
+            <HugeiconsIcon
+              icon={PlusSignIcon}
+              size={16}
+              color="#2B3A67"
+              strokeWidth={2}
+            />
+            CV
+          </Link>
+        </div>
+
+        {/* FILTER PILLS — horizontally scrollable, never wraps/clips */}
+        <div className="mb-6 md:mb-8 -mx-4 sm:-mx-6 md:mx-0 px-4 sm:px-6 md:px-0 overflow-x-auto">
+          <div className="flex gap-1 bg-[#FAFAF8] rounded-full p-1 border border-[#E4E4E0] w-fit">
+            {FILTERS.map((f) => {
+              const count =
+                f.value === "all"
+                  ? generations.length
+                  : generations.filter((g) => g.type === f.value).length;
+              return (
+                <button
+                  key={f.value}
+                  onClick={() => setFilter(f.value)}
+                  className={`text-sm px-4 py-1.5 rounded-full transition-colors flex items-center gap-1.5 whitespace-nowrap ${
+                    filter === f.value
+                      ? "bg-[#2B3A67] text-white"
+                      : "text-[#6B6B63] hover:text-[#2B3A67]"
+                  }`}
+                >
+                  {f.label}
+                  <span
+                    className={
+                      filter === f.value ? "text-white/70" : "text-[#B9B9AF]"
+                    }
                   >
-                    {f.label}
-                    <span
-                      className={
-                        filter === f.value ? "text-white/70" : "text-[#B9B9AF]"
-                      }
-                    >
-                      {count}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -163,7 +169,7 @@ export default function Dashboard() {
             />
           </div>
         ) : filtered.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-24 text-center border border-dashed border-[#E4E4E0] rounded-lg">
+          <div className="flex flex-col items-center justify-center py-16 md:py-24 px-4 text-center border border-dashed border-[#E4E4E0] rounded-lg">
             <HugeiconsIcon
               icon={InboxIcon}
               size={36}
@@ -175,25 +181,29 @@ export default function Dashboard() {
                 ? "Nothing here yet. Once you seal a proposal or a CV, it'll show up in this archive."
                 : `No ${filter === "proposal" ? "proposals" : "CVs"} sealed yet.`}
             </p>
-            <div className="flex gap-3 mt-5">
+            <div className="flex flex-col sm:flex-row gap-3 mt-5 w-full sm:w-auto">
               <Link
                 href="/compose"
-                className="text-sm font-medium text-white bg-[#2B3A67] rounded-full px-5 py-2 hover:opacity-90 transition-opacity"
+                className="text-sm font-medium text-white bg-[#2B3A67] rounded-full px-5 py-2.5 hover:opacity-90 transition-opacity text-center"
               >
                 New proposal
               </Link>
               <Link
                 href="/cv"
-                className="text-sm font-medium text-[#2B3A67] border border-[#2B3A67] rounded-full px-5 py-2 hover:bg-[#2B3A67]/5 transition-colors"
+                className="text-sm font-medium text-[#2B3A67] border border-[#2B3A67] rounded-full px-5 py-2.5 hover:bg-[#2B3A67]/5 transition-colors text-center"
               >
                 New CV
               </Link>
             </div>
           </div>
         ) : (
-          <div className="grid md:grid-cols-[340px_1fr] gap-8">
-            {/* LIST */}
-            <div className="flex flex-col gap-2">
+          <div className="grid md:grid-cols-[340px_1fr] gap-4 md:gap-8">
+            {/* LIST — hidden on mobile once something is selected, always visible md+ */}
+            <div
+              className={`flex flex-col gap-2 ${
+                selectedId ? "hidden md:flex" : "flex"
+              }`}
+            >
               {filtered.map((g) => (
                 <button
                   key={g._id}
@@ -205,7 +215,7 @@ export default function Dashboard() {
                   }`}
                 >
                   {selectedId === g._id && (
-                    <span className="absolute left-0 top-3 bottom-3 w-[3px] rounded-full bg-[#C9A227]" />
+                    <span className="absolute left-0 top-3 bottom-3 w-[3px] rounded-full bg-[#C9A227] hidden md:block" />
                   )}
                   <div className="flex items-center gap-2 mb-1.5">
                     <HugeiconsIcon
@@ -226,12 +236,26 @@ export default function Dashboard() {
               ))}
             </div>
 
-            {/* DETAIL */}
-            <div>
+            {/* DETAIL — hidden on mobile until something is selected, always visible md+ */}
+            <div className={selectedId ? "block" : "hidden md:block"}>
               {selected && (
                 <>
+                  {/* Back button — mobile only */}
+                  <button
+                    onClick={() => setSelectedId(null)}
+                    className="flex items-center gap-1.5 text-sm text-[#2B3A67] mb-4 md:hidden -ml-1 py-1"
+                  >
+                    <HugeiconsIcon
+                      icon={ArrowLeft01Icon}
+                      size={18}
+                      color="#2B3A67"
+                      strokeWidth={1.5}
+                    />
+                    Back to archive
+                  </button>
+
                   <div className="flex items-start justify-between mb-4 gap-4">
-                    <div>
+                    <div className="min-w-0">
                       <span className="text-[11px] tracking-wide uppercase text-[#8A8A82] block mb-1.5">
                         {selected.type === "proposal"
                           ? "the proposal"
@@ -244,7 +268,7 @@ export default function Dashboard() {
                     </div>
                     <button
                       onClick={handleCopy}
-                      className="flex items-center gap-2 text-xs text-[#2B3A67] hover:opacity-70 shrink-0 mt-1"
+                      className="flex items-center gap-2 text-xs text-[#2B3A67] hover:opacity-70 shrink-0 mt-1 py-1"
                     >
                       <HugeiconsIcon
                         icon={copied ? Tick01Icon : Copy01Icon}
@@ -255,7 +279,7 @@ export default function Dashboard() {
                       {copied ? "Copied" : "Copy"}
                     </button>
                   </div>
-                  <div className="border border-[#E4E4E0] rounded-md p-6 min-h-[380px] whitespace-pre-wrap text-[14.5px] leading-[1.7]">
+                  <div className="border border-[#E4E4E0] rounded-md p-4 md:p-6 min-h-[300px] md:min-h-[380px] whitespace-pre-wrap text-sm md:text-[14.5px] leading-[1.7]">
                     {selected.output}
                   </div>
                 </>
