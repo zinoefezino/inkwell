@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
   const sys = `You tailor CVs/resumes for someone applying to a specific job posting, in any field. Re-order and re-weight the existing CV content so the most relevant experience for THIS posting appears first — do not invent new experience, skills, or projects that aren't already in the CV. Keep every real fact from the original CV; only change ordering, framing, and emphasis. Do not call out or apologize for anything the CV lacks. Keep formatting clean and plain (no markdown symbols), ready to paste into a document.`;
 
   const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${process.env.GEMINI_API_KEY}`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },

@@ -18,7 +18,7 @@ Skills / expertise: ${profile.skills || "general professional experience"}
 Relevant past work to draw on: ${profile.snippet || "general freelance project history"}`;
 
   const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${process.env.GEMINI_API_KEY}`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -37,6 +37,12 @@ Relevant past work to draw on: ${profile.snippet || "general freelance project h
   );
 
   const data = await res.json();
+  if (!data.candidates) {
+    console.error(
+      "Gemini returned no candidates:",
+      JSON.stringify(data, null, 2),
+    );
+  }
   const draft =
     data.candidates?.[0]?.content?.parts
       ?.map((p: { text: string }) => p.text)

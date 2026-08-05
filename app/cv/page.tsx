@@ -29,6 +29,7 @@ export default function TailorCV() {
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
   const [attempted, setAttempted] = useState(false);
+  const [extracting, setExtracting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const cvMissing = cvText.trim().length <= 40;
@@ -37,11 +38,14 @@ export default function TailorCV() {
 
   async function handleFile(file: File) {
     setError("");
+    setCvText("");
     setFileName(file.name);
+    setExtracting(true);
 
     if (file.name.endsWith(".txt")) {
       const text = await file.text();
       setCvText(text);
+      setExtracting(false);
       return;
     }
 
@@ -50,11 +54,20 @@ export default function TailorCV() {
         const mammoth = await import("mammoth");
         const arrayBuffer = await file.arrayBuffer();
         const result = await mammoth.extractRawText({ arrayBuffer });
+        if (!result.value.trim()) {
+          setError(
+            "Couldn't find any text in that file. It may be empty, image-based, or corrupted — try pasting the text instead.",
+          );
+          setExtracting(false);
+          return;
+        }
         setCvText(result.value);
       } catch {
         setError(
           "Couldn't read that .docx file. Try pasting the text instead.",
         );
+      } finally {
+        setExtracting(false);
       }
       return;
     }
@@ -72,9 +85,17 @@ export default function TailorCV() {
           setError(data.error);
           return;
         }
+        if (!data.text || !data.text.trim()) {
+          setError(
+            "Couldn't find any text in that PDF — it may be a scanned or image-based document. Try pasting the text instead.",
+          );
+          return;
+        }
         setCvText(data.text);
       } catch {
         setError("Couldn't read that PDF. Try pasting the text instead.");
+      } finally {
+        setExtracting(false);
       }
       return;
     }
@@ -82,6 +103,7 @@ export default function TailorCV() {
     setError(
       "Unsupported file type. Use .txt, .docx, or paste your CV text directly.",
     );
+    setExtracting(false);
   }
 
   async function handleTailor() {

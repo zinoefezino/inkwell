@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 
+export const runtime = "nodejs";
+
 export async function POST(req: NextRequest) {
   const { userId } = await auth();
   if (!userId) {
@@ -15,12 +17,11 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { PDFParse } = await import("pdf-parse");
+    const { extractText, getDocumentProxy } = await import("unpdf");
     const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    const parser = new PDFParse({ data: buffer });
-    const result = await parser.getText();
-    return NextResponse.json({ text: result.text });
+    const pdf = await getDocumentProxy(new Uint8Array(arrayBuffer));
+    const { text } = await extractText(pdf, { mergePages: true });
+    return NextResponse.json({ text });
   } catch (e) {
     console.error("PDF extraction failed:", e);
     return NextResponse.json(
