@@ -29,6 +29,30 @@ const STEPS = [
   },
 ];
 
+const TESTIMONIALS = [
+  {
+    name: "Amara",
+    role: "Freelance copywriter",
+    rating: 5,
+    quote:
+      "I used to spend twenty minutes rewriting the same proposal for every posting. Now it actually reads like I read the job.",
+  },
+  {
+    name: "Daniel",
+    role: "Product designer, job seeking",
+    rating: 5,
+    quote:
+      "It didn't invent anything about my background, it just moved the right parts of my CV to the top. That's the part I trust.",
+  },
+  {
+    name: "Priya",
+    role: "Freelance developer",
+    rating: 5,
+    quote:
+      "Cut my application time down a lot. I still tweak the tone before sending, but the first draft isn't generic filler anymore.",
+  },
+];
+
 const FAQS = [
   {
     q: "Is Inkwell free?",
@@ -64,7 +88,7 @@ export default async function Home() {
 
       {/* HERO */}
       <section className="max-w-6xl mx-auto px-8 pt-16 pb-20 grid md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
-        <div>
+        <div className="flex flex-col items-center text-center md:items-start md:text-left">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-[#F2F2EE] leading-[1.1] mb-6">
             Tailored proposals and CVs, in{" "}
             <span className="text-[#2B3A67] dark:text-[#8FA3E0]">seconds.</span>
@@ -74,10 +98,10 @@ export default async function Home() {
             proposal and every CV leads with what you do have, not what you
             don&apos;t.
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-col md:flex-row gap-3 w-full max-w-xs sm:max-w-none md:w-auto">
             <Link
               href="/compose"
-              className="inline-flex items-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-white bg-[#2B3A67] hover:opacity-90 transition-opacity"
+              className="inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-white bg-[#2B3A67] hover:opacity-90 transition-opacity"
             >
               <HugeiconsIcon
                 icon={Mail01Icon}
@@ -89,7 +113,7 @@ export default async function Home() {
             </Link>
             <Link
               href="/cv"
-              className="inline-flex items-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-[#2B3A67] dark:text-[#8FA3E0] border border-[#2B3A67] dark:border-[#8FA3E0] hover:bg-[#2B3A67]/5 dark:hover:bg-[#8FA3E0]/10 transition-colors"
+              className="inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-[#2B3A67] dark:text-[#8FA3E0] border border-[#2B3A67] dark:border-[#8FA3E0] hover:bg-[#2B3A67]/5 dark:hover:bg-[#8FA3E0]/10 transition-colors"
             >
               <HugeiconsIcon
                 icon={File01Icon}
@@ -216,6 +240,53 @@ export default async function Home() {
             Inkwell eliminates application fatigue by automatically framing your
             proven history around what each client needs.
           </p>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38]">
+        <div className="max-w-6xl mx-auto px-8 py-20">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-medium mt-3">
+              Loved by freelancers and job seekers
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {TESTIMONIALS.map((t) => (
+              <div
+                key={t.name}
+                className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-lg p-6 flex flex-col"
+              >
+                <div
+                  className="flex gap-0.5 mb-4"
+                  aria-label={`${t.rating} out of 5 stars`}
+                >
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <span
+                      key={i}
+                      className={
+                        i < t.rating
+                          ? "text-[#C9A227]"
+                          : "text-[#E4E4E0] dark:text-[#2A2E38]"
+                      }
+                    >
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <p className="text-[14.5px] leading-relaxed text-[#4A4A44] dark:text-[#D8D8D2] mb-6 flex-1">
+                  &quot;{t.quote}&quot;
+                </p>
+                <div>
+                  <p className="text-[14px] font-medium">{t.name}</p>
+                  <p className="text-[12.5px] text-[#8A8A82] dark:text-[#9A9A92]">
+                    {t.role}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
