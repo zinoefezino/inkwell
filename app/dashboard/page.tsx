@@ -261,7 +261,7 @@ export default function Dashboard() {
                       color="currentColor"
                       strokeWidth={1.5}
                     />
-                    Back to archive
+                    Back to archive list
                   </button>
 
                   <div className="flex items-start justify-between mb-4 gap-4">
