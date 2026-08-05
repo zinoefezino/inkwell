@@ -106,7 +106,7 @@ export default function Compose() {
       <main className="max-w-6xl mx-auto px-8 py-10">
         <Link
           href="/dashboard"
-          className="inline-flex items-center gap-1.5 text-sm text-[#8A8A82] dark:text-[#9A9A92] hover:text-[#2B3A67] dark:hover:text-[#8FA3E0] transition-colors mb-6"
+          className="inline-flex items-center gap-1.5 text-sm text-[#8A8A82] dark:text-[#9A9A92] hover:text-[#3B4E90] dark:hover:text-[#8FA3E0] transition-colors mb-6"
         >
           <HugeiconsIcon
             icon={ArrowLeft01Icon}
@@ -131,10 +131,10 @@ export default function Compose() {
                 onChange={(e) => setPosting(e.target.value)}
                 placeholder="Paste the job posting here..."
                 rows={11}
-                className={`w-full rounded-md border p-4 text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 dark:focus:ring-[#8FA3E0]/30 ${
+                className={`w-full rounded-md border p-4 text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#3B4E90]/30 dark:focus:ring-[#8FA3E0]/30 ${
                   attempted && postingMissing
                     ? "border-red-400 dark:border-red-500"
-                    : "border-[#E4E4E0] dark:border-[#2A2E38] focus:border-[#2B3A67] dark:focus:border-[#8FA3E0]"
+                    : "border-[#E4E4E0] dark:border-[#2A2E38] focus:border-[#3B4E90] dark:focus:border-[#8FA3E0]"
                 }`}
               />
               {attempted && postingMissing && (
@@ -171,7 +171,7 @@ export default function Compose() {
                         setProfile({ ...profile, name: e.target.value })
                       }
                       placeholder="Your name"
-                      className={`w-full border rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 dark:focus:ring-[#8FA3E0]/30 ${
+                      className={`w-full border rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#3B4E90]/30 dark:focus:ring-[#8FA3E0]/30 ${
                         attempted && nameMissing
                           ? "border-red-400 dark:border-red-500"
                           : "border-[#E4E4E0] dark:border-[#2A2E38]"
@@ -194,7 +194,7 @@ export default function Compose() {
                         setProfile({ ...profile, skills: e.target.value })
                       }
                       placeholder="Core skills / expertise"
-                      className={`w-full border rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 dark:focus:ring-[#8FA3E0]/30 ${
+                      className={`w-full border rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#3B4E90]/30 dark:focus:ring-[#8FA3E0]/30 ${
                         attempted && skillsMissing
                           ? "border-red-400 dark:border-red-500"
                           : "border-[#E4E4E0] dark:border-[#2A2E38]"
@@ -222,7 +222,7 @@ export default function Compose() {
                         onClick={() => setProfile({ ...profile, tone: t })}
                         className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
                           profile.tone === t
-                            ? "bg-[#2B3A67] text-white border-[#2B3A67]"
+                            ? "bg-[#3B4E90] text-white border-[#3B4E90]"
                             : "border-[#E4E4E0] dark:border-[#2A2E38] text-[#4A4A44] dark:text-[#D8D8D2]"
                         }`}
                       >
@@ -275,7 +275,7 @@ export default function Compose() {
                 <div className="flex items-center gap-3">
                   <button
                     onClick={handleCopy}
-                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] dark:text-[#8FA3E0] hover:opacity-70"
+                    className="flex items-center gap-1.5 text-xs text-[#3B4E90] dark:text-[#8FA3E0] hover:opacity-70"
                   >
                     <HugeiconsIcon
                       icon={copied ? Tick01Icon : Copy01Icon}
@@ -292,7 +292,7 @@ export default function Compose() {
                         subtitle: "Proposal",
                       })
                     }
-                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] dark:text-[#8FA3E0] hover:opacity-70"
+                    className="flex items-center gap-1.5 text-xs text-[#3B4E90] dark:text-[#8FA3E0] hover:opacity-70"
                   >
                     <HugeiconsIcon
                       icon={Download01Icon}
@@ -309,7 +309,7 @@ export default function Compose() {
                         subtitle: "Proposal",
                       })
                     }
-                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] dark:text-[#8FA3E0] hover:opacity-70"
+                    className="flex items-center gap-1.5 text-xs text-[#3B4E90] dark:text-[#8FA3E0] hover:opacity-70"
                   >
                     <HugeiconsIcon
                       icon={Download01Icon}

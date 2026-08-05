@@ -19,7 +19,7 @@ export default function Header() {
               alt="Inkwell logo"
               className="w-10 h-10 md:w-10 md:h-10 dark:brightness-125 dark:contrast-125"
             />
-            <span className="text-base md:text-lg font-medium text-[#2B3A67] dark:text-[#8FA3E0] -ml-3">
+            <span className="text-base md:text-lg font-medium text-[#3B4E90] dark:text-[#8FA3E0] -ml-3">
               Inkwell
             </span>
           </div>
@@ -74,7 +74,7 @@ export default function Header() {
             <Show when="signed-out">
               <ThemeToggle />
               <SignInButton mode="modal" fallbackRedirectUrl="/dashboard">
-                <button className="inline-flex items-center gap-2.5 rounded-full pl-4 pr-5 md:pr-6 py-2.5 md:py-3 text-sm font-medium text-white bg-[#2B3A67] hover:opacity-90 transition-opacity">
+                <button className="inline-flex items-center gap-2.5 rounded-full pl-4 pr-5 md:pr-6 py-2.5 md:py-3 text-sm font-medium text-white bg-[#3B4E90] hover:opacity-90 transition-opacity">
                   Sign in
                 </button>
               </SignInButton>

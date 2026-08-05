@@ -144,7 +144,7 @@ export default function TailorCV() {
       <main className="max-w-6xl mx-auto px-8 py-10">
         <Link
           href="/dashboard"
-          className="inline-flex items-center gap-1.5 text-sm text-[#8A8A82] dark:text-[#9A9A92] hover:text-[#2B3A67] dark:hover:text-[#8FA3E0] transition-colors mb-6"
+          className="inline-flex items-center gap-1.5 text-sm text-[#8A8A82] dark:text-[#9A9A92] hover:text-[#3B4E90] dark:hover:text-[#8FA3E0] transition-colors mb-6"
         >
           <HugeiconsIcon
             icon={ArrowLeft01Icon}
@@ -192,7 +192,7 @@ export default function TailorCV() {
                     onClick={() => setMode("upload")}
                     className={`text-xs px-3 py-1 rounded-full transition-colors ${
                       mode === "upload"
-                        ? "bg-[#2B3A67] text-white"
+                        ? "bg-[#3B4E90] text-white"
                         : "text-[#6B6B63] dark:text-[#B5B5AC]"
                     }`}
                   >
@@ -208,10 +208,10 @@ export default function TailorCV() {
                     onChange={(e) => setCvText(e.target.value)}
                     placeholder="Paste your CV text here..."
                     rows={11}
-                    className={`w-full rounded-md border p-4 text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 dark:focus:ring-[#8FA3E0]/30 ${
+                    className={`w-full rounded-md border p-4 text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#3B4E90]/30 dark:focus:ring-[#8FA3E0]/30 ${
                       attempted && cvMissing
                         ? "border-red-400 dark:border-red-500"
-                        : "border-[#E4E4E0] dark:border-[#2A2E38] focus:border-[#2B3A67] dark:focus:border-[#8FA3E0]"
+                        : "border-[#E4E4E0] dark:border-[#2A2E38] focus:border-[#3B4E90] dark:focus:border-[#8FA3E0]"
                     }`}
                   />
                   {attempted && cvMissing && (
@@ -226,7 +226,7 @@ export default function TailorCV() {
                   className={`w-full h-70 rounded-md border-2 border-dashed border-[#E4E4E0] dark:border-[#2A2E38] flex flex-col items-center justify-center gap-3 transition-colors ${
                     extracting
                       ? "cursor-wait"
-                      : "cursor-pointer hover:border-[#2B3A67]/40 dark:hover:border-[#8FA3E0]/40"
+                      : "cursor-pointer hover:border-[#3B4E90]/40 dark:hover:border-[#8FA3E0]/40"
                   }`}
                 >
                   <input
@@ -278,10 +278,10 @@ export default function TailorCV() {
                 onChange={(e) => setPosting(e.target.value)}
                 placeholder="Paste the job posting here..."
                 rows={6}
-                className={`w-full rounded-md border p-4 text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 dark:focus:ring-[#8FA3E0]/30 ${
+                className={`w-full rounded-md border p-4 text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#3B4E90]/30 dark:focus:ring-[#8FA3E0]/30 ${
                   attempted && postingMissing
                     ? "border-red-400 dark:border-red-500"
-                    : "border-[#E4E4E0] dark:border-[#2A2E38] focus:border-[#2B3A67] dark:focus:border-[#8FA3E0]"
+                    : "border-[#E4E4E0] dark:border-[#2A2E38] focus:border-[#3B4E90] dark:focus:border-[#8FA3E0]"
                 }`}
               />
               {attempted && postingMissing && (
@@ -332,7 +332,7 @@ export default function TailorCV() {
                 <div className="flex items-center gap-3">
                   <button
                     onClick={handleCopy}
-                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] dark:text-[#8FA3E0] hover:opacity-70"
+                    className="flex items-center gap-1.5 text-xs text-[#3B4E90] dark:text-[#8FA3E0] hover:opacity-70"
                   >
                     <HugeiconsIcon
                       icon={copied ? Tick01Icon : Copy01Icon}
@@ -349,7 +349,7 @@ export default function TailorCV() {
                         subtitle: "Tailored CV",
                       })
                     }
-                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] dark:text-[#8FA3E0] hover:opacity-70"
+                    className="flex items-center gap-1.5 text-xs text-[#3B4E90] dark:text-[#8FA3E0] hover:opacity-70"
                   >
                     <HugeiconsIcon
                       icon={Download01Icon}
@@ -366,7 +366,7 @@ export default function TailorCV() {
                         subtitle: "Tailored CV",
                       })
                     }
-                    className="flex items-center gap-1.5 text-xs text-[#2B3A67] dark:text-[#8FA3E0] hover:opacity-70"
+                    className="flex items-center gap-1.5 text-xs text-[#3B4E90] dark:text-[#8FA3E0] hover:opacity-70"
                   >
                     <HugeiconsIcon
                       icon={Download01Icon}

@@ -102,7 +102,7 @@ export default function Dashboard() {
         <div className="flex items-center gap-2 flex-wrap mb-3 md:mb-8">
           <Link
             href="/compose"
-            className="flex items-center gap-1.5 text-sm font-medium text-white bg-[#2B3A67] rounded-full pl-3.5 pr-4 py-2 hover:opacity-90 transition-opacity"
+            className="flex items-center gap-1.5 text-sm font-medium text-white bg-[#3B4E90] rounded-full pl-3.5 pr-4 py-2 hover:opacity-90 transition-opacity"
           >
             <HugeiconsIcon
               icon={PlusSignIcon}
@@ -119,7 +119,7 @@ export default function Dashboard() {
             <HugeiconsIcon
               icon={PlusSignIcon}
               size={16}
-              color="#2B3A67"
+              color="#3B4E90"
               strokeWidth={2}
             />
             CV
@@ -140,8 +140,8 @@ export default function Dashboard() {
                   onClick={() => setFilter(f.value)}
                   className={`text-sm px-4 py-1.5 rounded-full transition-colors flex items-center gap-1.5 whitespace-nowrap ${
                     filter === f.value
-                      ? "bg-[#2B3A67] text-white"
-                      : "text-[#6B6B63] dark:text-[#B5B5AC] hover:text-[#2B3A67] dark:hover:text-[#8FA3E0]"
+                      ? "bg-[#3B4E90] text-white"
+                      : "text-[#6B6B63] dark:text-[#B5B5AC] hover:text-[#3B4E90] dark:hover:text-[#8FA3E0]"
                   }`}
                 >
                   {f.label}
@@ -186,13 +186,13 @@ export default function Dashboard() {
             <div className="flex flex-col sm:flex-row gap-3 mt-5 w-full sm:w-auto">
               <Link
                 href="/compose"
-                className="text-sm font-medium text-white bg-[#2B3A67] rounded-full px-5 py-2.5 hover:opacity-90 transition-opacity text-center"
+                className="text-sm font-medium text-white bg-[#3B4E90] rounded-full px-5 py-2.5 hover:opacity-90 transition-opacity text-center"
               >
                 New proposal
               </Link>
               <Link
                 href="/cv"
-                className="text-sm font-medium text-[#2B3A67] dark:text-[#8FA3E0] border border-[#2B3A67] dark:border-[#8FA3E0] rounded-full px-5 py-2.5 hover:bg-[#2B3A67]/5 dark:hover:bg-[#8FA3E0]/10 transition-colors text-center"
+                className="text-sm font-medium text-[#3B4E90] dark:text-[#8FA3E0] border border-[#3B4E90] dark:border-[#8FA3E0] rounded-full px-5 py-2.5 hover:bg-[#3B4E90]/5 dark:hover:bg-[#8FA3E0]/10 transition-colors text-center"
               >
                 New CV
               </Link>
@@ -209,7 +209,7 @@ export default function Dashboard() {
               {filtered.map((g) => {
                 const typeColor =
                   g.type === "proposal"
-                    ? "bg-[#2B3A67] dark:bg-[#8FA3E0]"
+                    ? "bg-[#3B4E90] dark:bg-[#8FA3E0]"
                     : "bg-[#C9A227]";
                 return (
                   <button
@@ -217,19 +217,19 @@ export default function Dashboard() {
                     onClick={() => setSelectedId(g._id)}
                     className={`relative w-full text-left rounded-md border pl-5 pr-4 py-3 transition-all overflow-hidden ${
                       selectedId === g._id
-                        ? "border-[#2B3A67] dark:border-[#8FA3E0] bg-[#2B3A67]/[0.03] dark:bg-[#8FA3E0]/10 shadow-sm"
-                        : "border-[#E4E4E0] dark:border-[#2A2E38] hover:border-[#2B3A67]/30 dark:hover:border-[#8FA3E0]/30 hover:bg-[#FAFAF8] dark:hover:bg-[#1B1F29]"
+                        ? "border-[#3B4E90] dark:border-[#8FA3E0] bg-[#3B4E90]/3 dark:bg-[#8FA3E0]/10 shadow-sm"
+                        : "border-[#E4E4E0] dark:border-[#2A2E38] hover:border-[#3B4E90]/30 dark:hover:border-[#8FA3E0]/30 hover:bg-[#FAFAF8] dark:hover:bg-[#1B1F29]"
                     }`}
                   >
                     <span
-                      className={`absolute left-0 top-0 bottom-0 w-[3px] ${typeColor}`}
+                      className={`absolute left-0 top-0 bottom-0 w-0.75 ${typeColor}`}
                     />
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex items-center gap-2 min-w-0">
                         <HugeiconsIcon
                           icon={g.type === "proposal" ? Mail01Icon : File01Icon}
                           size={15}
-                          color="#2B3A67"
+                          color="#3B4E90"
                           strokeWidth={1.5}
                           className="shrink-0"
                         />
@@ -253,7 +253,7 @@ export default function Dashboard() {
                   {/* Back button — mobile only */}
                   <button
                     onClick={() => setSelectedId(null)}
-                    className="flex items-center gap-1.5 text-sm text-[#2B3A67] dark:text-[#8FA3E0] mb-4 md:hidden -ml-1 py-1"
+                    className="flex items-center gap-1.5 text-sm text-[#3B4E90] dark:text-[#8FA3E0] mb-4 md:hidden -ml-1 py-1"
                   >
                     <HugeiconsIcon
                       icon={ArrowLeft01Icon}
@@ -278,7 +278,7 @@ export default function Dashboard() {
                     </div>
                     <button
                       onClick={handleCopy}
-                      className="flex items-center gap-2 text-xs text-[#2B3A67] dark:text-[#8FA3E0] hover:opacity-70 shrink-0 mt-1 py-1"
+                      className="flex items-center gap-2 text-xs text-[#3B4E90] dark:text-[#8FA3E0] hover:opacity-70 shrink-0 mt-1 py-1"
                     >
                       <HugeiconsIcon
                         icon={copied ? Tick01Icon : Copy01Icon}
@@ -289,7 +289,7 @@ export default function Dashboard() {
                       {copied ? "Copied" : "Copy"}
                     </button>
                   </div>
-                  <div className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-md p-4 md:p-6 min-h-[300px] md:min-h-[380px] max-h-[60vh] overflow-y-auto whitespace-pre-wrap text-sm md:text-[14.5px] leading-[1.7]">
+                  <div className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-md p-4 md:p-6 min-h-75 md:min-h-95 max-h-[60vh] overflow-y-auto whitespace-pre-wrap text-sm md:text-[14.5px] leading-[1.7]">
                     {selected.output}
                   </div>
                 </>

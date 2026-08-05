@@ -89,11 +89,11 @@ const FAQS = [
 
 // Shared button styles, used identically in the Hero and the Closing CTA
 const btnPrimary =
-  "inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-white bg-[#2B3A67] hover:opacity-90 transition-opacity";
+  "inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-white bg-[#3B4E90] hover:opacity-90 transition-opacity";
 const btnPrimaryInverted =
-  "inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-[#2B3A67] bg-white hover:opacity-90 transition-opacity";
+  "inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-[#3B4E90] bg-white hover:opacity-90 transition-opacity";
 const btnSecondary =
-  "inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-[#2B3A67] dark:text-[#8FA3E0] border border-[#2B3A67] dark:border-[#8FA3E0] hover:bg-[#2B3A67]/5 dark:hover:bg-[#8FA3E0]/10 transition-colors";
+  "inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-[#3B4E90] dark:text-[#8FA3E0] border border-[#3B4E90] dark:border-[#8FA3E0] hover:bg-[#3B4E90]/5 dark:hover:bg-[#8FA3E0]/10 transition-colors";
 const btnSecondaryInverted =
   "inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-white border border-white/40 hover:bg-white/10 transition-colors";
 
@@ -121,7 +121,7 @@ export default async function Home() {
           {/* <Eyebrow>for freelancers & job seekers</Eyebrow> */}
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.05] mt-4 mb-6">
             Tailored proposals and CVs, in{" "}
-            <span className="text-[#2B3A67] dark:text-[#8FA3E0]">seconds.</span>
+            <span className="text-[#3B4E90] dark:text-[#8FA3E0]">seconds.</span>
           </h1>
           <p className="text-[17px] leading-relaxed text-[#4A4A44] dark:text-[#D8D8D2] max-w-md mb-8">
             Inkwell reorders and re-emphasizes your existing experience so every
@@ -142,7 +142,7 @@ export default async function Home() {
               <HugeiconsIcon
                 icon={File01Icon}
                 size={18}
-                color="#2B3A67"
+                color="#3B4E90"
                 strokeWidth={1.5}
               />
               Tailor a CV
@@ -344,7 +344,7 @@ export default async function Home() {
       {/* CLOSING CTA */}
       <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38] py-20">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="rounded-2xl bg-[#2B3A67] dark:bg-[#3B4E90] px-8 py-16 text-center text-white shadow-xl shadow-[#2B3A67]/10 dark:shadow-none dark:ring-1 dark:ring-white/10 space-y-6">
+          <div className="rounded-2xl bg-[#3B4E90] dark:bg-[#2B3A67] px-8 py-16 text-center text-white shadow-xl shadow-[#2B3A67]/10 dark:shadow-none dark:ring-1 dark:ring-white/10 space-y-6">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
               Stop starting from a blank page.
             </h2>
@@ -357,7 +357,7 @@ export default async function Home() {
                 <HugeiconsIcon
                   icon={Mail01Icon}
                   size={18}
-                  color="#2B3A67"
+                  color="#3B4E90"
                   strokeWidth={1.5}
                 />
                 Tailor a proposal
