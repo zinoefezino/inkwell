@@ -13,7 +13,7 @@ export default function Header() {
     <>
       <header className="fixed top-0 inset-x-0 z-50 border-b border-[#E4E4E0] dark:border-[#2A2E38] bg-white/80 dark:bg-[#14171F]/80 backdrop-blur-md backdrop-saturate-150">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-6 h-16 md:h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center shrink-0">
+          <div className="flex items-center shrink-0">
             <img
               src="/logo2.png"
               alt="Inkwell logo"
@@ -22,11 +22,11 @@ export default function Header() {
             <span className="text-base md:text-lg font-medium text-[#2B3A67] dark:text-[#8FA3E0] -ml-3">
               Inkwell
             </span>
-          </Link>
+          </div>
 
           <div className="flex items-center gap-3 md:gap-6">
             <Show when="signed-in">
-              <nav className="flex items-center gap-1 md:gap-5">
+              {/* <nav className="flex items-center gap-1 md:gap-5">
                 <Link
                   href="/compose"
                   title="Proposal"
@@ -66,7 +66,7 @@ export default function Header() {
                   />
                   <span className="hidden md:inline">Archive</span>
                 </Link>
-              </nav>
+              </nav> */}
               <ThemeToggle />
               <UserButton />
             </Show>
