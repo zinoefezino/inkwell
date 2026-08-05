@@ -133,6 +133,10 @@ export default function TailorCV() {
     setTimeout(() => setCopied(false), 1500);
   }
 
+  const filenameBase = `cv-${name || "tailored"}`
+    .toLowerCase()
+    .replace(/\s+/g, "-");
+
   return (
     <div className="min-h-screen bg-white dark:bg-[#14171F] text-[#14171F] dark:text-[#F2F2EE]">
       <Header />
@@ -218,8 +222,12 @@ export default function TailorCV() {
                 </>
               ) : (
                 <div
-                  onClick={() => fileInputRef.current?.click()}
-                  className="w-full h-70 rounded-md border-2 border-dashed border-[#E4E4E0] dark:border-[#2A2E38] flex flex-col items-center justify-center gap-3 cursor-pointer hover:border-[#2B3A67]/40 dark:hover:border-[#8FA3E0]/40 transition-colors"
+                  onClick={() => !extracting && fileInputRef.current?.click()}
+                  className={`w-full h-70 rounded-md border-2 border-dashed border-[#E4E4E0] dark:border-[#2A2E38] flex flex-col items-center justify-center gap-3 transition-colors ${
+                    extracting
+                      ? "cursor-wait"
+                      : "cursor-pointer hover:border-[#2B3A67]/40 dark:hover:border-[#8FA3E0]/40"
+                  }`}
                 >
                   <input
                     ref={fileInputRef}
@@ -231,15 +239,24 @@ export default function TailorCV() {
                     }
                   />
                   <HugeiconsIcon
-                    icon={fileName ? File01Icon : Upload01Icon}
+                    icon={
+                      extracting
+                        ? Loading03Icon
+                        : fileName
+                          ? File01Icon
+                          : Upload01Icon
+                    }
                     size={32}
                     color="#8A8A82"
                     strokeWidth={1.5}
+                    className={extracting ? "animate-spin" : ""}
                   />
                   <p className="text-sm text-[#6B6B63] dark:text-[#B5B5AC]">
-                    {fileName || "Click to upload .txt, .docx, or .pdf"}
+                    {extracting
+                      ? "Extracting text..."
+                      : fileName || "Click to upload .txt, .docx, or .pdf"}
                   </p>
-                  {cvText && fileName && (
+                  {cvText && fileName && !extracting && (
                     <p className="text-xs text-[#C9A227]">
                       Text extracted — ready to tailor
                     </p>
@@ -327,7 +344,7 @@ export default function TailorCV() {
                   </button>
                   <button
                     onClick={() =>
-                      downloadAsDocx(tailored, "tailored-cv", {
+                      downloadAsDocx(tailored, filenameBase, {
                         title: name,
                         subtitle: "Tailored CV",
                       })
@@ -344,7 +361,7 @@ export default function TailorCV() {
                   </button>
                   <button
                     onClick={() =>
-                      downloadAsPdf(tailored, "tailored-cv", {
+                      downloadAsPdf(tailored, filenameBase, {
                         title: name,
                         subtitle: "Tailored CV",
                       })

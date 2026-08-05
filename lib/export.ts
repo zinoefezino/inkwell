@@ -10,6 +10,19 @@ interface ExportOptions {
 // Splits generated text into paragraphs, and — for CVs — detects likely
 // section headings (short lines in ALL CAPS, or ending without punctuation,
 // followed by content) so they render as real headings rather than plain text.
+// If the generated text's first line is essentially the same as the title
+// we're about to render above it (e.g. the CV already starts with the
+// person's name), drop that line so the name doesn't appear twice.
+function stripDuplicateTitleLine(text: string, title?: string) {
+  if (!title?.trim()) return text;
+  const lines = text.split("\n");
+  const first = lines[0]?.trim().toLowerCase();
+  if (first && first === title.trim().toLowerCase()) {
+    return lines.slice(1).join("\n");
+  }
+  return text;
+}
+
 function parseBlocks(text: string) {
   const lines = text
     .split("\n")
@@ -32,7 +45,7 @@ export async function downloadAsDocx(
 ) {
   const { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType } =
     await import("docx");
-  const blocks = parseBlocks(text);
+  const blocks = parseBlocks(stripDuplicateTitleLine(text, opts.title));
 
   const children = [];
 
@@ -95,7 +108,7 @@ export async function downloadAsPdf(
   opts: ExportOptions = {},
 ) {
   const { jsPDF } = await import("jspdf");
-  const blocks = parseBlocks(text);
+  const blocks = parseBlocks(stripDuplicateTitleLine(text, opts.title));
 
   const doc = new jsPDF({ unit: "pt", format: "a4" });
   const margin = 56;

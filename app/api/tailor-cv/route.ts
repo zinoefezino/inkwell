@@ -35,22 +35,30 @@ export async function POST(req: NextRequest) {
   );
 
   const data = await res.json();
+  if (!data.candidates) {
+    console.error(
+      "Gemini returned no candidates:",
+      JSON.stringify(data, null, 2),
+    );
+  }
   const tailored =
     data.candidates?.[0]?.content?.parts
       ?.map((p: { text: string }) => p.text)
       .join("\n") || "";
 
-  try {
-    await connectDB();
-    await Generation.create({
-      userId,
-      type: "cv",
-      posting,
-      input: cvText,
-      output: tailored,
-    });
-  } catch (e) {
-    console.error("Failed to save tailored CV:", e);
+  if (tailored.trim()) {
+    try {
+      await connectDB();
+      await Generation.create({
+        userId,
+        type: "cv",
+        posting,
+        input: cvText,
+        output: tailored,
+      });
+    } catch (e) {
+      console.error("Failed to save tailored CV:", e);
+    }
   }
 
   return NextResponse.json({ tailored });

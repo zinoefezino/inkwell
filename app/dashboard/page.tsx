@@ -202,7 +202,7 @@ export default function Dashboard() {
           <div className="grid md:grid-cols-[340px_1fr] gap-4 md:gap-8">
             {/* LIST — hidden on mobile once something is selected, always visible md+ */}
             <div
-              className={`flex flex-col gap-2 ${
+              className={`flex flex-col gap-2 max-h-[60vh] overflow-y-auto pr-1 ${
                 selectedId ? "hidden md:flex" : "flex"
               }`}
             >
@@ -212,12 +212,12 @@ export default function Dashboard() {
                   onClick={() => setSelectedId(g._id)}
                   className={`relative text-left rounded-md border p-4 pl-5 transition-all ${
                     selectedId === g._id
-                      ? "border-[#2B3A67] dark:border-[#8FA3E0] bg-[#2B3A67]/3 dark:bg-[#8FA3E0]/10 shadow-sm"
+                      ? "border-[#2B3A67] dark:border-[#8FA3E0] bg-[#2B3A67]/[0.03] dark:bg-[#8FA3E0]/10 shadow-sm"
                       : "border-[#E4E4E0] dark:border-[#2A2E38] hover:border-[#2B3A67]/30 dark:hover:border-[#8FA3E0]/30 hover:bg-[#FAFAF8] dark:hover:bg-[#1B1F29]"
                   }`}
                 >
                   {selectedId === g._id && (
-                    <span className="absolute left-0 top-3 bottom-3 w-0.75 rounded-full bg-[#C9A227] hidden md:block" />
+                    <span className="absolute left-0 top-3 bottom-3 w-[3px] rounded-full bg-[#C9A227] hidden md:block" />
                   )}
                   <div className="flex items-center gap-2 mb-1.5">
                     <HugeiconsIcon
@@ -281,7 +281,7 @@ export default function Dashboard() {
                       {copied ? "Copied" : "Copy"}
                     </button>
                   </div>
-                  <div className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-md p-4 md:p-6 min-h-75 md:min-h-95 whitespace-pre-wrap text-sm md:text-[14.5px] leading-[1.7]">
+                  <div className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-md p-4 md:p-6 min-h-[300px] md:min-h-[380px] max-h-[60vh] overflow-y-auto whitespace-pre-wrap text-sm md:text-[14.5px] leading-[1.7]">
                     {selected.output}
                   </div>
                 </>
