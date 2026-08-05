@@ -2,14 +2,25 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
-  FeatherIcon,
   Mail01Icon,
   File01Icon,
-  ArrowRight01Icon,
   ArrowDown01Icon,
 } from "@hugeicons/core-free-icons";
 import Link from "next/link";
 import Header from "@/components/Header";
+
+const WHAT = [
+  {
+    icon: Mail01Icon,
+    title: "Proposals",
+    body: "A tailored, tone-matched proposal for the specific posting — never a template with the blanks filled in.",
+  },
+  {
+    icon: File01Icon,
+    title: "CVs",
+    body: "Your CV, re-ordered and re-weighted around what this posting actually cares about — same experience, sharper framing.",
+  },
+];
 
 const STEPS = [
   {
@@ -76,6 +87,24 @@ const FAQS = [
   },
 ];
 
+// Shared button styles, used identically in the Hero and the Closing CTA
+const btnPrimary =
+  "inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-white bg-[#2B3A67] hover:opacity-90 transition-opacity";
+const btnPrimaryInverted =
+  "inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-[#2B3A67] bg-white hover:opacity-90 transition-opacity";
+const btnSecondary =
+  "inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-[#2B3A67] dark:text-[#8FA3E0] border border-[#2B3A67] dark:border-[#8FA3E0] hover:bg-[#2B3A67]/5 dark:hover:bg-[#8FA3E0]/10 transition-colors";
+const btnSecondaryInverted =
+  "inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-white border border-white/40 hover:bg-white/10 transition-colors";
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="text-[11px] tracking-[0.15em] uppercase text-[#8A8A82] dark:text-[#9A9A92]">
+      {children}
+    </span>
+  );
+}
+
 export default async function Home() {
   const { userId } = await auth();
   if (userId) {
@@ -89,7 +118,8 @@ export default async function Home() {
       {/* HERO */}
       <section className="max-w-6xl mx-auto px-8 pt-16 pb-20 grid md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-[#F2F2EE] leading-[1.1] mb-6">
+          <Eyebrow>for freelancers & job seekers</Eyebrow>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.05] mt-4 mb-6">
             Tailored proposals and CVs, in{" "}
             <span className="text-[#2B3A67] dark:text-[#8FA3E0]">seconds.</span>
           </h1>
@@ -99,10 +129,7 @@ export default async function Home() {
             don&apos;t.
           </p>
           <div className="flex flex-col md:flex-row gap-3 w-full max-w-xs sm:max-w-none md:w-auto">
-            <Link
-              href="/compose"
-              className="inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-white bg-[#2B3A67] hover:opacity-90 transition-opacity"
-            >
+            <Link href="/compose" className={btnPrimary}>
               <HugeiconsIcon
                 icon={Mail01Icon}
                 size={18}
@@ -111,10 +138,7 @@ export default async function Home() {
               />
               Tailor a proposal
             </Link>
-            <Link
-              href="/cv"
-              className="inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-[#2B3A67] dark:text-[#8FA3E0] border border-[#2B3A67] dark:border-[#8FA3E0] hover:bg-[#2B3A67]/5 dark:hover:bg-[#8FA3E0]/10 transition-colors"
-            >
+            <Link href="/cv" className={btnSecondary}>
               <HugeiconsIcon
                 icon={File01Icon}
                 size={18}
@@ -172,67 +196,68 @@ export default async function Home() {
       </section>
 
       {/* WHAT INKWELL DOES */}
-      <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38]">
+      <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38] bg-[#FAFAF8] dark:bg-[#1B1F29]">
         <div className="max-w-6xl mx-auto px-8 py-16">
-          <div className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-lg grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#E4E4E0] dark:divide-[#2A2E38]">
-            <div className="p-8">
-              <div className="w-10 h-10 rounded-full bg-[#2B3A67]/5 dark:bg-[#8FA3E0]/10 flex items-center justify-center mb-5">
-                <HugeiconsIcon
-                  icon={Mail01Icon}
-                  size={18}
-                  color="#2B3A67"
-                  strokeWidth={1.5}
-                  className="dark:brightness-125"
-                />
+          <div className="text-center mb-10 md:mb-12">
+            <Eyebrow>two products, one voice</Eyebrow>
+            <h2 className="text-2xl md:text-3xl font-medium mt-3">
+              What Inkwell does
+            </h2>
+          </div>
+
+          <div className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-lg grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#E4E4E0] dark:divide-[#2A2E38] bg-white dark:bg-[#14171F]">
+            {WHAT.map((w) => (
+              <div key={w.title} className="p-8">
+                <div className="w-10 h-10 rounded-full bg-[#2B3A67]/5 dark:bg-[#8FA3E0]/10 flex items-center justify-center mb-5">
+                  <HugeiconsIcon
+                    icon={w.icon}
+                    size={18}
+                    color="#2B3A67"
+                    strokeWidth={1.5}
+                    className="dark:brightness-125"
+                  />
+                </div>
+                <h3 className="text-xl font-medium mb-2">{w.title}</h3>
+                <p className="text-[14.5px] leading-relaxed text-[#6B6B63] dark:text-[#B5B5AC] max-w-xs">
+                  {w.body}
+                </p>
               </div>
-              <h3 className="text-xl font-medium mb-2">Proposals</h3>
-              <p className="text-[14.5px] leading-relaxed text-[#6B6B63] dark:text-[#B5B5AC] max-w-xs">
-                A tailored, tone-matched proposal for the specific posting —
-                never a template with the blanks filled in.
-              </p>
-            </div>
-            <div className="p-8">
-              <div className="w-10 h-10 rounded-full bg-[#2B3A67]/5 dark:bg-[#8FA3E0]/10 flex items-center justify-center mb-5">
-                <HugeiconsIcon
-                  icon={File01Icon}
-                  size={18}
-                  color="#2B3A67"
-                  strokeWidth={1.5}
-                  className="dark:brightness-125"
-                />
-              </div>
-              <h3 className="text-xl font-medium mb-2">CVs</h3>
-              <p className="text-[14.5px] leading-relaxed text-[#6B6B63] dark:text-[#B5B5AC] max-w-xs">
-                Your CV, re-ordered and re-weighted around what this posting
-                actually cares about — same experience, sharper framing.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38] bg-[#FAFAF8] dark:bg-[#1B1F29]">
-        <div className="max-w-6xl mx-auto px-8 py-16 grid md:grid-cols-3 gap-10">
-          {STEPS.map((s) => (
-            <div key={s.n}>
-              <span className="text-[13px] text-[#C9A227]">{s.n}</span>
-              <h3 className="text-xl font-medium mt-2 mb-2">{s.title}</h3>
-              <p className="text-[14.5px] leading-relaxed text-[#6B6B63] dark:text-[#B5B5AC]">
-                {s.body}
-              </p>
-            </div>
-          ))}
+      <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38]">
+        <div className="max-w-6xl mx-auto px-8 py-16">
+          <div className="text-center mb-10 md:mb-12">
+            <Eyebrow>getting started</Eyebrow>
+            <h2 className="text-2xl md:text-3xl font-medium mt-3">
+              How it works
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-10">
+            {STEPS.map((s) => (
+              <div key={s.n}>
+                <span className="text-[13px] text-[#C9A227]">{s.n}</span>
+                <h3 className="text-xl font-medium mt-2 mb-2">{s.title}</h3>
+                <p className="text-[14.5px] leading-relaxed text-[#6B6B63] dark:text-[#B5B5AC]">
+                  {s.body}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* WHY */}
-      <section className="py-20 bg-[#FAFAF8] dark:bg-[#1B1F29] relative overflow-hidden">
+      <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38] py-20 bg-[#FAFAF8] dark:bg-[#1B1F29] relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-6 text-center space-y-6 relative z-10">
-          <span className="text-[80px] leading-none text-[#2B3A67] dark:text-[#8FA3E0] font-serif block opacity-50 select-none">
-            "
+          <span className="text-[80px] leading-none text-[#C9A227] font-serif block opacity-60 select-none">
+            &ldquo;
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight max-w-2xl mx-auto -mt-12">
+          <h2 className="text-3xl sm:text-4xl font-medium leading-tight max-w-2xl mx-auto -mt-12">
             Your tenth application of the day should never sound like your
             first.
           </h2>
@@ -247,6 +272,7 @@ export default async function Home() {
       <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38]">
         <div className="max-w-6xl mx-auto px-8 py-20">
           <div className="text-center mb-12">
+            <Eyebrow>from people who tailor</Eyebrow>
             <h2 className="text-2xl md:text-3xl font-medium mt-3">
               Loved by freelancers and job seekers
             </h2>
@@ -293,7 +319,10 @@ export default async function Home() {
       {/* FAQ */}
       <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38] bg-[#FAFAF8] dark:bg-[#1B1F29]">
         <div className="max-w-3xl mx-auto px-8 py-20">
-          <h2 className="text-2xl font-medium mb-8">Questions</h2>
+          <div className="text-center mb-10">
+            <Eyebrow>before you seal your first one</Eyebrow>
+            <h2 className="text-2xl md:text-3xl font-medium mt-3">Questions</h2>
+          </div>
           <div className="divide-y divide-[#E4E4E0] dark:divide-[#2A2E38]">
             {FAQS.map((f) => (
               <details key={f.q} className="group py-5">
@@ -317,33 +346,33 @@ export default async function Home() {
       </section>
 
       {/* CLOSING CTA */}
-      <section className="py-20 bg-slate-50 dark:bg-[#1B1F29]">
+      <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38] py-20">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="rounded-3xl bg-[#2B3A67] px-8 py-16 text-center text-white shadow-xl shadow-[#2B3A67]/10 space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+          <div className="rounded-2xl bg-[#2B3A67] dark:bg-[#3B4E90] px-8 py-16 text-center text-white shadow-xl shadow-[#2B3A67]/10 dark:shadow-none dark:ring-1 dark:ring-white/10 space-y-6">
+            <h2 className="text-3xl sm:text-4xl font-medium">
               Stop starting from a blank page.
             </h2>
-            <p className="text-slate-300 text-sm sm:text-base max-w-md mx-auto">
+            <p className="text-white/70 text-sm sm:text-base max-w-md mx-auto">
               Transform your raw experience into targeted proposals and
               structured CVs in seconds.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center pt-2">
-              <Link
-                href="/compose"
-                className="inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-[#2B3A67] bg-white hover:bg-slate-100 transition-colors shadow-sm"
-              >
-                Tailor a Proposal
+            <div className="flex flex-wrap gap-3 justify-center pt-2">
+              <Link href="/compose" className={btnPrimaryInverted}>
                 <HugeiconsIcon
-                  icon={ArrowRight01Icon}
-                  size={16}
+                  icon={Mail01Icon}
+                  size={18}
                   color="#2B3A67"
-                  strokeWidth={2}
+                  strokeWidth={1.5}
                 />
+                Tailor a proposal
               </Link>
-              <Link
-                href="/cv"
-                className="inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-white border border-white/30 hover:bg-white/10 transition-colors"
-              >
+              <Link href="/cv" className={btnSecondaryInverted}>
+                <HugeiconsIcon
+                  icon={File01Icon}
+                  size={18}
+                  color="#ffffff"
+                  strokeWidth={1.5}
+                />
                 Tailor a CV
               </Link>
             </div>
@@ -351,7 +380,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <footer className="max-w-6xl mx-auto px-8 py-8 flex items-center justify-between text-[13px] text-[#8A8A82] dark:text-[#9A9A92]">
+      <footer className="border-t border-[#E4E4E0] dark:border-[#2A2E38] max-w-6xl mx-auto px-8 py-8 flex items-center justify-between text-[13px] text-[#8A8A82] dark:text-[#9A9A92]">
         <span>inkwell</span>
         <span>© {new Date().getFullYear()} · Tailored proposals & CVs</span>
       </footer>
