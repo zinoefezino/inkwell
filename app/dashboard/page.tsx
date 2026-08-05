@@ -206,36 +206,44 @@ export default function Dashboard() {
                 selectedId ? "hidden md:flex" : "flex"
               }`}
             >
-              {filtered.map((g) => (
-                <button
-                  key={g._id}
-                  onClick={() => setSelectedId(g._id)}
-                  className={`relative text-left rounded-md border p-4 pl-5 transition-all ${
-                    selectedId === g._id
-                      ? "border-[#2B3A67] dark:border-[#8FA3E0] bg-[#2B3A67]/[0.03] dark:bg-[#8FA3E0]/10 shadow-sm"
-                      : "border-[#E4E4E0] dark:border-[#2A2E38] hover:border-[#2B3A67]/30 dark:hover:border-[#8FA3E0]/30 hover:bg-[#FAFAF8] dark:hover:bg-[#1B1F29]"
-                  }`}
-                >
-                  {selectedId === g._id && (
-                    <span className="absolute left-0 top-3 bottom-3 w-[3px] rounded-full bg-[#C9A227] hidden md:block" />
-                  )}
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <HugeiconsIcon
-                      icon={g.type === "proposal" ? Mail01Icon : File01Icon}
-                      size={16}
-                      color="#2B3A67"
-                      strokeWidth={1.5}
+              {filtered.map((g) => {
+                const typeColor =
+                  g.type === "proposal"
+                    ? "bg-[#2B3A67] dark:bg-[#8FA3E0]"
+                    : "bg-[#C9A227]";
+                return (
+                  <button
+                    key={g._id}
+                    onClick={() => setSelectedId(g._id)}
+                    className={`relative w-full text-left rounded-md border pl-5 pr-4 py-3 transition-all overflow-hidden ${
+                      selectedId === g._id
+                        ? "border-[#2B3A67] dark:border-[#8FA3E0] bg-[#2B3A67]/[0.03] dark:bg-[#8FA3E0]/10 shadow-sm"
+                        : "border-[#E4E4E0] dark:border-[#2A2E38] hover:border-[#2B3A67]/30 dark:hover:border-[#8FA3E0]/30 hover:bg-[#FAFAF8] dark:hover:bg-[#1B1F29]"
+                    }`}
+                  >
+                    <span
+                      className={`absolute left-0 top-0 bottom-0 w-[3px] ${typeColor}`}
                     />
-                    <span className="text-[10.5px] tracking-wide uppercase text-[#8A8A82] dark:text-[#9A9A92]">
-                      {g.type === "proposal" ? "proposal" : "cv"} ·{" "}
-                      {formatDate(g.createdAt)}
-                    </span>
-                  </div>
-                  <p className="text-[13px] leading-snug text-[#4A4A44] dark:text-[#D8D8D2]">
-                    {excerpt(g.posting)}
-                  </p>
-                </button>
-              ))}
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <HugeiconsIcon
+                          icon={g.type === "proposal" ? Mail01Icon : File01Icon}
+                          size={15}
+                          color="#2B3A67"
+                          strokeWidth={1.5}
+                          className="shrink-0"
+                        />
+                        <span className="text-[13px] font-medium truncate text-[#4A4A44] dark:text-[#D8D8D2]">
+                          {excerpt(g.posting, 42)}
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-[#8A8A82] dark:text-[#9A9A92] shrink-0">
+                        {formatDate(g.createdAt)}
+                      </span>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
 
             {/* DETAIL — hidden on mobile until something is selected, always visible md+ */}
