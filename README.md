@@ -1,6 +1,6 @@
 # Inkwell
 
-A tool that tailors proposals and CVs to a specific job posting — for freelancers and job seekers, not just developers.
+A tool that tailors proposals and CVs to a specific job posting — for freelancers and job seekers.
 
 ## What this is
 
