@@ -118,7 +118,7 @@ export default async function Home() {
       {/* HERO */}
       <section className="max-w-6xl mx-auto px-8 pt-16 pb-20 grid md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
-          <Eyebrow>for freelancers & job seekers</Eyebrow>
+          {/* <Eyebrow>for freelancers & job seekers</Eyebrow> */}
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.05] mt-4 mb-6">
             Tailored proposals and CVs, in{" "}
             <span className="text-[#2B3A67] dark:text-[#8FA3E0]">seconds.</span>
@@ -199,8 +199,7 @@ export default async function Home() {
       <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38] bg-[#FAFAF8] dark:bg-[#1B1F29]">
         <div className="max-w-6xl mx-auto px-8 py-16">
           <div className="text-center mb-10 md:mb-12">
-            <Eyebrow>two products, one voice</Eyebrow>
-            <h2 className="text-2xl md:text-3xl font-medium mt-3">
+            <h2 className="text-2xl md:text-3xl font-bold mt-3">
               What Inkwell does
             </h2>
           </div>
@@ -231,8 +230,7 @@ export default async function Home() {
       <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38]">
         <div className="max-w-6xl mx-auto px-8 py-16">
           <div className="text-center mb-10 md:mb-12">
-            <Eyebrow>getting started</Eyebrow>
-            <h2 className="text-2xl md:text-3xl font-medium mt-3">
+            <h2 className="text-2xl md:text-3xl font-bold mt-3">
               How it works
             </h2>
           </div>
@@ -257,7 +255,7 @@ export default async function Home() {
           <span className="text-[80px] leading-none text-[#C9A227] font-serif block opacity-60 select-none">
             &ldquo;
           </span>
-          <h2 className="text-3xl sm:text-4xl font-medium leading-tight max-w-2xl mx-auto -mt-12">
+          <h2 className="text-3xl sm:text-4xl font-bold leading-tight max-w-2xl mx-auto -mt-12">
             Your tenth application of the day should never sound like your
             first.
           </h2>
@@ -272,8 +270,7 @@ export default async function Home() {
       <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38]">
         <div className="max-w-6xl mx-auto px-8 py-20">
           <div className="text-center mb-12">
-            <Eyebrow>from people who tailor</Eyebrow>
-            <h2 className="text-2xl md:text-3xl font-medium mt-3">
+            <h2 className="text-2xl md:text-3xl font-bold mt-3">
               Loved by freelancers and job seekers
             </h2>
           </div>
@@ -320,8 +317,7 @@ export default async function Home() {
       <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38] bg-[#FAFAF8] dark:bg-[#1B1F29]">
         <div className="max-w-3xl mx-auto px-8 py-20">
           <div className="text-center mb-10">
-            <Eyebrow>before you seal your first one</Eyebrow>
-            <h2 className="text-2xl md:text-3xl font-medium mt-3">Questions</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mt-3">Questions</h2>
           </div>
           <div className="divide-y divide-[#E4E4E0] dark:divide-[#2A2E38]">
             {FAQS.map((f) => (
@@ -349,7 +345,7 @@ export default async function Home() {
       <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38] py-20">
         <div className="max-w-4xl mx-auto px-6">
           <div className="rounded-2xl bg-[#2B3A67] dark:bg-[#3B4E90] px-8 py-16 text-center text-white shadow-xl shadow-[#2B3A67]/10 dark:shadow-none dark:ring-1 dark:ring-white/10 space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-medium">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
               Stop starting from a blank page.
             </h2>
             <p className="text-white/70 text-sm sm:text-base max-w-md mx-auto">
