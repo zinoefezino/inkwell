@@ -63,7 +63,7 @@ export default async function Home() {
       <Header />
 
       {/* HERO */}
-      <section className="relative max-w-6xl mx-auto overflow-hidden px-8 pt-16 pb-20 grid md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
+      <section className="relative max-w-6xl mx-auto overflow-hidden px-4 sm:px-8 pt-16 pb-20 grid md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
         <div className="absolute inset-x-0 bottom-0 z-20 h-20 bg-white dark:bg-[#14171F]" />
         <div className="absolute inset-x-0 bottom-20 z-30 border-t border-[#E4E4E0] dark:border-[#2A2E38]" />
         <div>
@@ -105,7 +105,7 @@ export default async function Home() {
         </div>
 
         <div className="relative z-10 flex translate-y-20 justify-center md:justify-end">
-          <div className="relative w-95 aspect-380/600 rounded-[3.2rem] border-10 border-[#14171F] dark:border-[#2A2E38] bg-white dark:bg-[#14171F] shadow-2xl overflow-hidden">
+          <div className="relative w-full max-w-95 aspect-380/600 rounded-[3.2rem] border-10 border-[#14171F] dark:border-[#2A2E38] bg-white dark:bg-[#14171F] shadow-2xl overflow-hidden">
             {/* Dynamic Island */}
             <div className="absolute top-3 left-1/2 -translate-x-1/2 w-27.5 h-7.5 bg-black rounded-full z-10" />
 
