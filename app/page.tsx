@@ -66,17 +66,17 @@ export default async function Home() {
       <section className="relative max-w-6xl mx-auto overflow-hidden px-4 sm:px-8 pt-16 pb-20 grid md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
         <div className="absolute inset-x-0 bottom-0 z-20 h-20 bg-white dark:bg-[#14171F]" />
         <div className="absolute inset-x-0 bottom-20 z-30 border-t border-[#E4E4E0] dark:border-[#2A2E38]" />
-        <div>
+        <div className="text-center md:text-left">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-[#F2F2EE] leading-[1.1] mb-6">
             Tailored proposals and CVs, in{" "}
             <span className="text-[#2B3A67] dark:text-[#8FA3E0]">seconds.</span>
           </h1>
-          <p className="text-[17px] leading-relaxed text-[#4A4A44] dark:text-[#D8D8D2] max-w-md mb-8">
+          <p className="mx-auto max-w-md text-[17px] leading-relaxed text-[#4A4A44] dark:text-[#D8D8D2] mb-8 md:mx-0">
             Inkwell reorders and re-emphasizes your existing experience so every
             proposal and every CV leads with what you do have, not what you
             don&apos;t.
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap justify-center gap-3 md:justify-start">
             <Link
               href="/compose"
               className="inline-flex items-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-white bg-[#2B3A67] hover:opacity-90 transition-opacity"
