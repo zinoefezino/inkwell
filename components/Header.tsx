@@ -14,14 +14,7 @@ export default function Header() {
       <header className="fixed top-0 inset-x-0 z-50 border-b border-[#E4E4E0] dark:border-[#2A2E38] bg-white/80 dark:bg-[#14171F]/80 backdrop-blur-md backdrop-saturate-150">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-6 h-16 md:h-20 flex items-center justify-between">
           <div className="flex items-center shrink-0">
-            <img
-              src="/logo2.png"
-              alt="Inkwell logo"
-              className="w-10 h-10 md:w-10 md:h-10 dark:brightness-125 dark:contrast-125"
-            />
-            <span className="text-base md:text-lg font-medium text-[#3B4E90] dark:text-[#8FA3E0] -ml-3">
-              Inkwell
-            </span>
+            <img src="/logo4.png" alt="Inkwell logo" className="w-auto h-20" />
           </div>
 
           <div className="flex items-center gap-3 md:gap-6">

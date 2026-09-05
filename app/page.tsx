@@ -2,25 +2,14 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
+  FeatherIcon,
   Mail01Icon,
   File01Icon,
+  ArrowRight01Icon,
   ArrowDown01Icon,
 } from "@hugeicons/core-free-icons";
 import Link from "next/link";
 import Header from "@/components/Header";
-
-const WHAT = [
-  {
-    icon: Mail01Icon,
-    title: "Proposals",
-    body: "A tailored, tone-matched proposal for the specific posting — never a template with the blanks filled in.",
-  },
-  {
-    icon: File01Icon,
-    title: "CVs",
-    body: "Your CV, re-ordered and re-weighted around what this posting actually cares about — same experience, sharper framing.",
-  },
-];
 
 const STEPS = [
   {
@@ -37,30 +26,6 @@ const STEPS = [
     n: "03",
     title: "Seal & send",
     body: "A tailored proposal and CV in seconds — no generic filler, no dwelling on what you don't have.",
-  },
-];
-
-const TESTIMONIALS = [
-  {
-    name: "Amara",
-    role: "Freelance copywriter",
-    rating: 5,
-    quote:
-      "I used to spend twenty minutes rewriting the same proposal for every posting. Now it actually reads like I read the job.",
-  },
-  {
-    name: "Daniel",
-    role: "Product designer, job seeking",
-    rating: 5,
-    quote:
-      "It didn't invent anything about my background, it just moved the right parts of my CV to the top. That's the part I trust.",
-  },
-  {
-    name: "Priya",
-    role: "Freelance developer",
-    rating: 5,
-    quote:
-      "Cut my application time down a lot. I still tweak the tone before sending, but the first draft isn't generic filler anymore.",
   },
 ];
 
@@ -87,24 +52,6 @@ const FAQS = [
   },
 ];
 
-// Shared button styles, used identically in the Hero and the Closing CTA
-const btnPrimary =
-  "inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-white bg-[#3B4E90] hover:opacity-90 transition-opacity";
-const btnPrimaryInverted =
-  "inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-[#3B4E90] bg-white hover:opacity-90 transition-opacity";
-const btnSecondary =
-  "inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-[#3B4E90] dark:text-[#8FA3E0] border border-[#3B4E90] dark:border-[#8FA3E0] hover:bg-[#3B4E90]/5 dark:hover:bg-[#8FA3E0]/10 transition-colors";
-const btnSecondaryInverted =
-  "inline-flex items-center justify-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-white border border-white/40 hover:bg-white/10 transition-colors";
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="text-[11px] tracking-[0.15em] uppercase text-[#8A8A82] dark:text-[#9A9A92]">
-      {children}
-    </span>
-  );
-}
-
 export default async function Home() {
   const { userId } = await auth();
   if (userId) {
@@ -116,20 +63,24 @@ export default async function Home() {
       <Header />
 
       {/* HERO */}
-      <section className="max-w-6xl mx-auto px-8 pt-16 pb-20 grid md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
-        <div className="flex flex-col items-center text-center md:items-start md:text-left">
-          {/* <Eyebrow>for freelancers & job seekers</Eyebrow> */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.05] mt-4 mb-6">
+      <section className="relative max-w-6xl mx-auto overflow-hidden px-8 pt-16 pb-20 grid md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
+        <div className="absolute inset-x-0 bottom-0 z-20 h-20 bg-white dark:bg-[#14171F]" />
+        <div className="absolute inset-x-0 bottom-20 z-30 border-t border-[#E4E4E0] dark:border-[#2A2E38]" />
+        <div>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-[#F2F2EE] leading-[1.1] mb-6">
             Tailored proposals and CVs, in{" "}
-            <span className="text-[#3B4E90] dark:text-[#8FA3E0]">seconds.</span>
+            <span className="text-[#2B3A67] dark:text-[#8FA3E0]">seconds.</span>
           </h1>
           <p className="text-[17px] leading-relaxed text-[#4A4A44] dark:text-[#D8D8D2] max-w-md mb-8">
             Inkwell reorders and re-emphasizes your existing experience so every
             proposal and every CV leads with what you do have, not what you
             don&apos;t.
           </p>
-          <div className="flex flex-col md:flex-row gap-3 w-full max-w-xs sm:max-w-none md:w-auto">
-            <Link href="/compose" className={btnPrimary}>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/compose"
+              className="inline-flex items-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-white bg-[#2B3A67] hover:opacity-90 transition-opacity"
+            >
               <HugeiconsIcon
                 icon={Mail01Icon}
                 size={18}
@@ -138,11 +89,14 @@ export default async function Home() {
               />
               Tailor a proposal
             </Link>
-            <Link href="/cv" className={btnSecondary}>
+            <Link
+              href="/cv"
+              className="inline-flex items-center gap-2.5 rounded-full pl-4 pr-6 py-3 text-sm font-medium text-[#2B3A67] dark:text-[#8FA3E0] border border-[#2B3A67] dark:border-[#8FA3E0] hover:bg-[#2B3A67]/5 dark:hover:bg-[#8FA3E0]/10 transition-colors"
+            >
               <HugeiconsIcon
                 icon={File01Icon}
                 size={18}
-                color="#3B4E90"
+                color="#2B3A67"
                 strokeWidth={1.5}
               />
               Tailor a CV
@@ -150,112 +104,132 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-lg overflow-hidden">
-          <div className="px-4 py-3 border-b border-[#E4E4E0] dark:border-[#2A2E38] text-[11px] tracking-wide uppercase text-[#8A8A82] dark:text-[#9A9A92]">
-            the posting
-          </div>
-          <p className="px-4 py-3 text-[12.5px] leading-relaxed text-[#6B6B63] dark:text-[#B5B5AC] border-b border-[#E4E4E0] dark:border-[#2A2E38]">
-            &quot;...seeking someone with strong client communication and a
-            proven track record delivering on tight deadlines...&quot;
-          </p>
+        <div className="relative z-10 flex translate-y-20 justify-center md:justify-end">
+          <div className="relative w-95 aspect-380/600 rounded-[3.2rem] border-10 border-[#14171F] dark:border-[#2A2E38] bg-white dark:bg-[#14171F] shadow-2xl overflow-hidden">
+            {/* Dynamic Island */}
+            <div className="absolute top-3 left-1/2 -translate-x-1/2 w-27.5 h-7.5 bg-black rounded-full z-10" />
 
-          <div className="grid grid-cols-2 divide-x divide-[#E4E4E0] dark:divide-[#2A2E38]">
-            <div className="px-4 py-3">
-              <div className="flex items-center gap-1.5 text-[10.5px] tracking-wide uppercase text-[#8A8A82] dark:text-[#9A9A92] mb-2">
-                <HugeiconsIcon
-                  icon={Mail01Icon}
-                  size={14}
-                  color="#8A8A82"
-                  strokeWidth={1.5}
+            {/* Mini app content */}
+            <div className="px-6 pt-14 pb-8 h-full flex flex-col">
+              {/* Mini header */}
+              <div className="flex items-center mb-8">
+                <img
+                  src="/logo4.png"
+                  alt="Inkwell logo"
+                  className="w-auto h-15"
                 />
-                proposal
+
+                <span className="ml-auto w-8 h-8 rounded-full bg-[#2B3A67]/10 dark:bg-[#8FA3E0]/20" />
               </div>
-              <p className="text-[13px] leading-relaxed">
-                &quot;I&apos;ve delivered client work end to end under similar
-                timelines, most recently with weekly check-ins and a hard launch
-                date...&quot;
+
+              <p className="text-[19px] font-medium mb-1">Your archive</p>
+              <p className="text-[12px] text-[#8A8A82] dark:text-[#9A9A92] mb-5">
+                6 sealed so far.
               </p>
-            </div>
-            <div className="px-4 py-3">
-              <div className="flex items-center gap-1.5 text-[10.5px] tracking-wide uppercase text-[#8A8A82] dark:text-[#9A9A92] mb-2">
-                <HugeiconsIcon
-                  icon={File01Icon}
-                  size={14}
-                  color="#8A8A82"
-                  strokeWidth={1.5}
-                />
-                cv
+
+              {/* Mini filter pills */}
+              <div className="flex gap-1.5 mb-5">
+                <span className="text-[11px] px-3 py-1.5 rounded-full bg-[#2B3A67] text-white">
+                  All
+                </span>
+                <span className="text-[11px] px-3 py-1.5 rounded-full text-[#6B6B63] dark:text-[#B5B5AC] border border-[#E4E4E0] dark:border-[#2A2E38]">
+                  Proposals
+                </span>
+                <span className="text-[11px] px-3 py-1.5 rounded-full text-[#6B6B63] dark:text-[#B5B5AC] border border-[#E4E4E0] dark:border-[#2A2E38]">
+                  CVs
+                </span>
               </div>
-              <p className="text-[13px] leading-relaxed">
-                Client-delivery experience moved to the top, framed around speed
-                and communication...
-              </p>
+
+              {/* Mini archive rows */}
+              <div className="flex flex-col gap-2.5">
+                {[
+                  { color: "bg-[#2B3A67] dark:bg-[#8FA3E0]", w: "w-[85%]" },
+                  { color: "bg-[#C9A227]", w: "w-[70%]" },
+                  { color: "bg-[#2B3A67] dark:bg-[#8FA3E0]", w: "w-[90%]" },
+                  { color: "bg-[#C9A227]", w: "w-[60%]" },
+                  { color: "bg-[#2B3A67] dark:bg-[#8FA3E0]", w: "w-[75%]" },
+                ].map((row, i) => (
+                  <div
+                    key={i}
+                    className="relative rounded border border-[#E4E4E0] dark:border-[#2A2E38] pl-4 pr-3 py-3.5 overflow-hidden"
+                  >
+                    <span
+                      className={`absolute left-0 top-0 bottom-0 w-0.75 ${row.color}`}
+                    />
+                    <div
+                      className={`h-2 rounded-full bg-[#E4E4E0] dark:bg-[#2A2E38] ${row.w}`}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* WHAT INKWELL DOES */}
-      <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38] bg-[#FAFAF8] dark:bg-[#1B1F29]">
+      <section>
         <div className="max-w-6xl mx-auto px-8 py-16">
-          <div className="text-center mb-10 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mt-3">
-              What Inkwell does
-            </h2>
-          </div>
-
-          <div className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-lg grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#E4E4E0] dark:divide-[#2A2E38] bg-white dark:bg-[#14171F]">
-            {WHAT.map((w) => (
-              <div key={w.title} className="p-8">
-                <div className="w-10 h-10 rounded-full bg-[#2B3A67]/5 dark:bg-[#8FA3E0]/10 flex items-center justify-center mb-5">
-                  <HugeiconsIcon
-                    icon={w.icon}
-                    size={18}
-                    color="#2B3A67"
-                    strokeWidth={1.5}
-                    className="dark:brightness-125"
-                  />
-                </div>
-                <h3 className="text-xl font-medium mb-2">{w.title}</h3>
-                <p className="text-[14.5px] leading-relaxed text-[#6B6B63] dark:text-[#B5B5AC] max-w-xs">
-                  {w.body}
-                </p>
+          <div className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-lg grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#E4E4E0] dark:divide-[#2A2E38]">
+            <div className="p-8">
+              <div className="w-10 h-10 rounded-full bg-[#2B3A67]/5 dark:bg-[#8FA3E0]/10 flex items-center justify-center mb-5">
+                <HugeiconsIcon
+                  icon={Mail01Icon}
+                  size={18}
+                  color="#2B3A67"
+                  strokeWidth={1.5}
+                  className="dark:brightness-125"
+                />
               </div>
-            ))}
+              <h3 className="text-xl font-medium mb-2">Proposals</h3>
+              <p className="text-[14.5px] leading-relaxed text-[#6B6B63] dark:text-[#B5B5AC] max-w-xs">
+                A tailored, tone-matched proposal for the specific posting —
+                never a template with the blanks filled in.
+              </p>
+            </div>
+            <div className="p-8">
+              <div className="w-10 h-10 rounded-full bg-[#2B3A67]/5 dark:bg-[#8FA3E0]/10 flex items-center justify-center mb-5">
+                <HugeiconsIcon
+                  icon={File01Icon}
+                  size={18}
+                  color="#2B3A67"
+                  strokeWidth={1.5}
+                  className="dark:brightness-125"
+                />
+              </div>
+              <h3 className="text-xl font-medium mb-2">CVs</h3>
+              <p className="text-[14.5px] leading-relaxed text-[#6B6B63] dark:text-[#B5B5AC] max-w-xs">
+                A structured, formatted CV that emphasizes the skills and
+                experience the client is looking for without inventing anything
+                you don't have.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38]">
-        <div className="max-w-6xl mx-auto px-8 py-16">
-          <div className="text-center mb-10 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mt-3">
-              How it works
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-10">
-            {STEPS.map((s) => (
-              <div key={s.n}>
-                <span className="text-[13px] text-[#C9A227]">{s.n}</span>
-                <h3 className="text-xl font-medium mt-2 mb-2">{s.title}</h3>
-                <p className="text-[14.5px] leading-relaxed text-[#6B6B63] dark:text-[#B5B5AC]">
-                  {s.body}
-                </p>
-              </div>
-            ))}
-          </div>
+      <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38] bg-[#FAFAF8] dark:bg-[#1B1F29]">
+        <div className="max-w-6xl mx-auto px-8 py-16 grid md:grid-cols-3 gap-10">
+          {STEPS.map((s) => (
+            <div key={s.n}>
+              <span className="text-[13px] text-[#C9A227]">{s.n}</span>
+              <h3 className="text-xl font-medium mt-2 mb-2">{s.title}</h3>
+              <p className="text-[14.5px] leading-relaxed text-[#6B6B63] dark:text-[#B5B5AC]">
+                {s.body}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* WHY */}
-      <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38] py-20 bg-[#FAFAF8] dark:bg-[#1B1F29] relative overflow-hidden">
+      <section className="py-20 bg-[#FAFAF8] dark:bg-[#1B1F29] relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-6 text-center space-y-6 relative z-10">
-          <span className="text-[80px] leading-none text-[#C9A227] font-serif block opacity-60 select-none">
-            &ldquo;
+          <span className="text-[80px] leading-none text-[#2B3A67] dark:text-[#8FA3E0] font-serif block opacity-50 select-none">
+            "
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold leading-tight max-w-2xl mx-auto -mt-12">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight max-w-2xl mx-auto -mt-12">
             Your tenth application of the day should never sound like your
             first.
           </h2>
@@ -266,59 +240,10 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38]">
-        <div className="max-w-6xl mx-auto px-8 py-20">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mt-3">
-              Loved by freelancers and job seekers
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((t) => (
-              <div
-                key={t.name}
-                className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-lg p-6 flex flex-col"
-              >
-                <div
-                  className="flex gap-0.5 mb-4"
-                  aria-label={`${t.rating} out of 5 stars`}
-                >
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <span
-                      key={i}
-                      className={
-                        i < t.rating
-                          ? "text-[#C9A227]"
-                          : "text-[#E4E4E0] dark:text-[#2A2E38]"
-                      }
-                    >
-                      ★
-                    </span>
-                  ))}
-                </div>
-                <p className="text-[14.5px] leading-relaxed text-[#4A4A44] dark:text-[#D8D8D2] mb-6 flex-1">
-                  &quot;{t.quote}&quot;
-                </p>
-                <div>
-                  <p className="text-[14px] font-medium">{t.name}</p>
-                  <p className="text-[12.5px] text-[#8A8A82] dark:text-[#9A9A92]">
-                    {t.role}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
       <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38] bg-[#FAFAF8] dark:bg-[#1B1F29]">
         <div className="max-w-3xl mx-auto px-8 py-20">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold mt-3">Questions</h2>
-          </div>
+          <h2 className="text-2xl font-medium mb-8">Questions</h2>
           <div className="divide-y divide-[#E4E4E0] dark:divide-[#2A2E38]">
             {FAQS.map((f) => (
               <details key={f.q} className="group py-5">
@@ -342,33 +267,33 @@ export default async function Home() {
       </section>
 
       {/* CLOSING CTA */}
-      <section className="border-t border-[#E4E4E0] dark:border-[#2A2E38] py-20">
+      <section className="py-20 bg-slate-50 dark:bg-[#1B1F29]">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="rounded-2xl bg-[#3B4E90] dark:bg-[#2B3A67] px-8 py-16 text-center text-white shadow-xl shadow-[#2B3A67]/10 dark:shadow-none dark:ring-1 dark:ring-white/10 space-y-6">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
+          <div className="rounded-3xl bg-[#2B3A67] px-8 py-16 text-center text-white shadow-xl shadow-[#2B3A67]/10 space-y-6">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
               Stop starting from a blank page.
             </h2>
-            <p className="text-white/70 text-sm sm:text-base max-w-md mx-auto">
+            <p className="text-slate-300 text-sm sm:text-base max-w-md mx-auto">
               Transform your raw experience into targeted proposals and
               structured CVs in seconds.
             </p>
-            <div className="flex flex-wrap gap-3 justify-center pt-2">
-              <Link href="/compose" className={btnPrimaryInverted}>
+            <div className="flex flex-wrap gap-4 justify-center pt-2">
+              <Link
+                href="/compose"
+                className="inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-[#2B3A67] bg-white hover:bg-slate-100 transition-colors shadow-sm"
+              >
+                Tailor a Proposal
                 <HugeiconsIcon
-                  icon={Mail01Icon}
-                  size={18}
-                  color="#3B4E90"
-                  strokeWidth={1.5}
+                  icon={ArrowRight01Icon}
+                  size={16}
+                  color="#2B3A67"
+                  strokeWidth={2}
                 />
-                Tailor a proposal
               </Link>
-              <Link href="/cv" className={btnSecondaryInverted}>
-                <HugeiconsIcon
-                  icon={File01Icon}
-                  size={18}
-                  color="#ffffff"
-                  strokeWidth={1.5}
-                />
+              <Link
+                href="/cv"
+                className="inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-white border border-white/30 hover:bg-white/10 transition-colors"
+              >
                 Tailor a CV
               </Link>
             </div>
@@ -376,7 +301,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-[#E4E4E0] dark:border-[#2A2E38] max-w-6xl mx-auto px-8 py-8 flex items-center justify-between text-[13px] text-[#8A8A82] dark:text-[#9A9A92]">
+      <footer className="max-w-6xl mx-auto px-8 py-8 flex items-center justify-between text-[13px] text-[#8A8A82] dark:text-[#9A9A92]">
         <span>inkwell</span>
         <span>© {new Date().getFullYear()} · Tailored proposals & CVs</span>
       </footer>

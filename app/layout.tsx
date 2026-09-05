@@ -9,7 +9,7 @@ const bricolage = Bricolage_Grotesque({
 });
 
 const siteUrl = "https://inkwell-five-azure.vercel.app";
-const title = "Inkwell — Tailored proposals and CVs in seconds";
+const title = "Inkwell - Tailored proposals and CVs in seconds";
 const description =
   "Paste a job posting and Inkwell reorders and reframes your real experience into a tailored proposal and CV — for freelancers and job seekers.";
 
