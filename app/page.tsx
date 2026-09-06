@@ -6,6 +6,9 @@ import {
   Mail01Icon,
   File01Icon,
   ArrowRight01Icon,
+  PlusSignIcon,
+  Moon02Icon,
+  Sun03Icon,
   ArrowDown01Icon,
 } from "@hugeicons/core-free-icons";
 import Link from "next/link";
@@ -25,18 +28,18 @@ const STEPS = [
   {
     n: "03",
     title: "Seal & send",
-    body: "A tailored proposal and CV in seconds — no generic filler, no dwelling on what you don't have.",
+    body: "A tailored proposal and CV in seconds. no generic filler, no dwelling on what you don't have.",
   },
 ];
 
 const FAQS = [
   {
     q: "Is Inkwell free?",
-    a: "Yes, for now — there's no paid tier yet.",
+    a: "Yes, for now. there's no paid tier yet.",
   },
   {
     q: "Does it just make things up about my experience?",
-    a: "No — for CVs, Inkwell only reorders and re-emphasizes what's already in your CV. It doesn't invent skills or experience you don't have.",
+    a: "No. for CVs, Inkwell only reorders and re-emphasizes what's already in your CV. It doesn't invent skills or experience you don't have.",
   },
   {
     q: "Is my data private?",
@@ -44,11 +47,11 @@ const FAQS = [
   },
   {
     q: "What file formats can I upload for my CV?",
-    a: "Paste your CV as text, or upload a .txt, .docx, or .pdf file — Inkwell extracts the text automatically.",
+    a: "Paste your CV as text, or upload a .txt, .docx, or .pdf file. Inkwell extracts the text automatically.",
   },
   {
     q: "Can I download what I generate?",
-    a: "Yes — copy to clipboard, or download as a formatted Word (.docx) or PDF document.",
+    a: "Yes. copy to clipboard, or download as a formatted Word (.docx) or PDF document.",
   },
 ];
 
@@ -119,7 +122,29 @@ export default async function Home() {
                   className="w-auto h-15"
                 />
 
-                <span className="ml-auto w-8 h-8 rounded-full bg-[#2B3A67]/10 dark:bg-[#8FA3E0]/20" />
+                <div className="ml-auto flex items-center gap-2">
+                  {/* Mini theme toggle */}
+                  <span className="w-7 h-7 rounded-full border border-[#E4E4E0] dark:border-[#2A2E38] flex items-center justify-center">
+                    <HugeiconsIcon
+                      icon={Sun03Icon}
+                      size={13}
+                      color="#4A4A44"
+                      strokeWidth={1.5}
+                      className="dark:hidden"
+                    />
+                    <HugeiconsIcon
+                      icon={Moon02Icon}
+                      size={13}
+                      color="#D8D8D2"
+                      strokeWidth={1.5}
+                      className="hidden dark:block"
+                    />
+                  </span>
+                  {/* Mini profile avatar */}
+                  <span className="w-8 h-8 rounded-full bg-[#2B3A67] dark:bg-[#8FA3E0] flex items-center justify-center text-[11px] font-medium text-white dark:text-[#14171F]">
+                    Z
+                  </span>
+                </div>
               </div>
 
               <p className="text-[19px] font-medium mb-1">Your archive</p>
@@ -127,38 +152,85 @@ export default async function Home() {
                 6 sealed so far.
               </p>
 
-              {/* Mini filter pills */}
-              <div className="flex gap-1.5 mb-5">
+              {/* Mini action buttons */}
+              <div className="flex gap-2 mb-4">
+                <span className="flex items-center gap-1 text-[11px] font-medium text-white bg-[#2B3A67] rounded-full pl-2.5 pr-3 py-1.5">
+                  <HugeiconsIcon
+                    icon={PlusSignIcon}
+                    size={11}
+                    color="#ffffff"
+                    strokeWidth={2.5}
+                  />
+                  Proposal
+                </span>
+                <span className="flex items-center gap-1 text-[11px] font-medium text-[#2B3A67] dark:text-[#8FA3E0] border border-[#2B3A67] dark:border-[#8FA3E0] rounded-full pl-2.5 pr-3 py-1.5">
+                  <HugeiconsIcon
+                    icon={PlusSignIcon}
+                    size={11}
+                    color="#2B3A67"
+                    strokeWidth={2.5}
+                  />
+                  CV
+                </span>
+              </div>
+
+              {/* Mini filter pills — grouped in one shared container */}
+              <div className="flex gap-1 bg-[#FAFAF8] dark:bg-[#1B1F29] rounded-full p-1 border border-[#E4E4E0] dark:border-[#2A2E38] w-fit mb-5">
                 <span className="text-[11px] px-3 py-1.5 rounded-full bg-[#2B3A67] text-white">
                   All
                 </span>
-                <span className="text-[11px] px-3 py-1.5 rounded-full text-[#6B6B63] dark:text-[#B5B5AC] border border-[#E4E4E0] dark:border-[#2A2E38]">
+                <span className="text-[11px] px-3 py-1.5 rounded-full text-[#6B6B63] dark:text-[#B5B5AC]">
                   Proposals
                 </span>
-                <span className="text-[11px] px-3 py-1.5 rounded-full text-[#6B6B63] dark:text-[#B5B5AC] border border-[#E4E4E0] dark:border-[#2A2E38]">
+                <span className="text-[11px] px-3 py-1.5 rounded-full text-[#6B6B63] dark:text-[#B5B5AC]">
                   CVs
                 </span>
               </div>
 
               {/* Mini archive rows */}
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-2">
                 {[
-                  { color: "bg-[#2B3A67] dark:bg-[#8FA3E0]", w: "w-[85%]" },
-                  { color: "bg-[#C9A227]", w: "w-[70%]" },
-                  { color: "bg-[#2B3A67] dark:bg-[#8FA3E0]", w: "w-[90%]" },
-                  { color: "bg-[#C9A227]", w: "w-[60%]" },
-                  { color: "bg-[#2B3A67] dark:bg-[#8FA3E0]", w: "w-[75%]" },
+                  {
+                    type: "Proposal",
+                    icon: Mail01Icon,
+                    color: "bg-[#2B3A67] dark:bg-[#8FA3E0]",
+                    label: "Senior frontend role",
+                  },
+                  {
+                    type: "CV",
+                    icon: File01Icon,
+                    color: "bg-[#C9A227]",
+                    label: "Product design lead",
+                  },
+                  {
+                    type: "Proposal",
+                    icon: Mail01Icon,
+                    color: "bg-[#2B3A67] dark:bg-[#8FA3E0]",
+                    label: "E-commerce rebuild",
+                  },
+                  {
+                    type: "CV",
+                    icon: File01Icon,
+                    color: "bg-[#C9A227]",
+                    label: "Marketing manager",
+                  },
                 ].map((row, i) => (
                   <div
                     key={i}
-                    className="relative rounded border border-[#E4E4E0] dark:border-[#2A2E38] pl-4 pr-3 py-3.5 overflow-hidden"
+                    className="relative flex items-center gap-2 rounded border border-[#E4E4E0] dark:border-[#2A2E38] pl-4 pr-3 py-2.5 overflow-hidden"
                   >
                     <span
-                      className={`absolute left-0 top-0 bottom-0 w-0.75 ${row.color}`}
+                      className={`absolute left-0 top-0 bottom-0 w-[3px] ${row.color}`}
                     />
-                    <div
-                      className={`h-2 rounded-full bg-[#E4E4E0] dark:bg-[#2A2E38] ${row.w}`}
+                    <HugeiconsIcon
+                      icon={row.icon}
+                      size={13}
+                      color="#2B3A67"
+                      strokeWidth={1.5}
                     />
+                    <span className="text-[11px] text-[#4A4A44] dark:text-[#D8D8D2] truncate">
+                      {row.label}
+                    </span>
                   </div>
                 ))}
               </div>
