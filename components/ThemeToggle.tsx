@@ -2,7 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { Sun03Icon, Moon02Icon, Tick01Icon } from "@hugeicons/core-free-icons";
+import {
+  ComputerIcon,
+  Sun03Icon,
+  Moon02Icon,
+  Tick01Icon,
+} from "@hugeicons/core-free-icons";
 
 type ThemeChoice = "light" | "dark" | "system";
 
@@ -13,23 +18,6 @@ function applyTheme(choice: ThemeChoice) {
       window.matchMedia("(prefers-color-scheme: dark)").matches);
   document.documentElement.classList.toggle("dark", isDark);
 }
-
-const SystemIcon = () => (
-  <svg
-    width="18"
-    height="18"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="3" y="4" width="18" height="13" rx="2" />
-    <path d="M8 21h8" />
-    <path d="M12 17v4" />
-  </svg>
-);
 
 const OPTIONS: { value: ThemeChoice; label: string; icon: React.ReactNode }[] =
   [
@@ -57,7 +45,18 @@ const OPTIONS: { value: ThemeChoice; label: string; icon: React.ReactNode }[] =
         />
       ),
     },
-    { value: "system", label: "System", icon: <SystemIcon /> },
+    {
+      value: "system",
+      label: "System",
+      icon: (
+        <HugeiconsIcon
+          icon={ComputerIcon}
+          size={17}
+          color="currentColor"
+          strokeWidth={1.5}
+        />
+      ),
+    },
   ];
 
 export default function ThemeToggle() {

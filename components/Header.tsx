@@ -14,52 +14,11 @@ export default function Header() {
       <header className="fixed top-0 inset-x-0 z-50 border-b border-[#E4E4E0] dark:border-[#2A2E38] bg-white/80 dark:bg-[#14171F]/80 backdrop-blur-md backdrop-saturate-150">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-6 h-16 md:h-20 flex items-center justify-between">
           <div className="flex items-center shrink-0">
-            <img src="/logo4.png" alt="Inkwell logo" className="w-auto h-20" />
+            <img src="/logo7.png" alt="Inkwell logo" className="w-auto h-20" />
           </div>
 
           <div className="flex items-center gap-3 md:gap-6">
             <Show when="signed-in">
-              {/* <nav className="flex items-center gap-1 md:gap-5">
-                <Link
-                  href="/compose"
-                  title="Proposal"
-                  className="flex items-center gap-1.5 text-sm font-medium text-[#4A4A44] dark:text-[#D8D8D2] hover:text-[#2B3A67] dark:hover:text-[#8FA3E0] transition-colors p-2 md:p-0 rounded-full hover:bg-[#2B3A67]/5 dark:hover:bg-[#8FA3E0]/10 md:hover:bg-transparent"
-                >
-                  <HugeiconsIcon
-                    icon={Mail01Icon}
-                    size={18}
-                    color="currentColor"
-                    strokeWidth={1.5}
-                  />
-                  <span className="hidden md:inline">Proposal</span>
-                </Link>
-                <Link
-                  href="/cv"
-                  title="CV"
-                  className="flex items-center gap-1.5 text-sm font-medium text-[#4A4A44] dark:text-[#D8D8D2] hover:text-[#2B3A67] dark:hover:text-[#8FA3E0] transition-colors p-2 md:p-0 rounded-full hover:bg-[#2B3A67]/5 dark:hover:bg-[#8FA3E0]/10 md:hover:bg-transparent"
-                >
-                  <HugeiconsIcon
-                    icon={File01Icon}
-                    size={18}
-                    color="currentColor"
-                    strokeWidth={1.5}
-                  />
-                  <span className="hidden md:inline">CV</span>
-                </Link>
-                <Link
-                  href="/dashboard"
-                  title="Archive"
-                  className="flex items-center gap-1.5 text-sm font-medium text-[#4A4A44] dark:text-[#D8D8D2] hover:text-[#2B3A67] dark:hover:text-[#8FA3E0] transition-colors p-2 md:p-0 rounded-full hover:bg-[#2B3A67]/5 dark:hover:bg-[#8FA3E0]/10 md:hover:bg-transparent"
-                >
-                  <HugeiconsIcon
-                    icon={Archive01Icon}
-                    size={18}
-                    color="currentColor"
-                    strokeWidth={1.5}
-                  />
-                  <span className="hidden md:inline">Archive</span>
-                </Link>
-              </nav> */}
               <ThemeToggle />
               <UserButton />
             </Show>

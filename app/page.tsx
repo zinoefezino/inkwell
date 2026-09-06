@@ -220,7 +220,7 @@ export default async function Home() {
               {/* Mini header */}
               <div className="flex items-center mb-8">
                 <img
-                  src="/logo4.png"
+                  src="/logo7.png"
                   alt="Inkwell logo"
                   className="w-auto h-15"
                 />
@@ -323,7 +323,7 @@ export default async function Home() {
                     className="relative flex items-center gap-2 rounded border border-[#E4E4E0] dark:border-[#2A2E38] pl-4 pr-3 py-2.5 overflow-hidden"
                   >
                     <span
-                      className={`absolute left-0 top-0 bottom-0 w-[3px] ${row.color}`}
+                      className={`absolute left-0 top-0 bottom-0 w-0.75 ${row.color}`}
                     />
                     <HugeiconsIcon
                       icon={row.icon}
@@ -388,7 +388,7 @@ export default async function Home() {
         <div className="max-w-6xl mx-auto px-8 py-16 grid md:grid-cols-3 gap-10">
           {STEPS.map((s) => (
             <div key={s.n}>
-              <span className="text-[13px] text-[#C9A227]">{s.n}</span>
+              <span className="text-[13px] text-[#2B3A67]">{s.n}</span>
               <h3 className="text-xl font-medium mt-2 mb-2">{s.title}</h3>
               <p className="text-[14.5px] leading-relaxed text-[#6B6B63] dark:text-[#B5B5AC]">
                 {s.body}
