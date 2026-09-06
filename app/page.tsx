@@ -112,6 +112,103 @@ export default async function Home() {
             {/* Dynamic Island */}
             <div className="absolute top-3 left-1/2 -translate-x-1/2 w-27.5 h-7.5 bg-black rounded-full z-10" />
 
+            {/* Status bar */}
+            <div className="absolute top-0 left-0 right-0 h-11 flex items-center justify-between px-8 z-10">
+              <span className="text-[13px] font-semibold text-[#14171F] dark:text-white">
+                8:41
+              </span>
+              <div className="flex items-center gap-1.5">
+                {/* Signal bars */}
+                <svg width="17" height="11" viewBox="0 0 17 11" fill="none">
+                  <rect
+                    x="0"
+                    y="6"
+                    width="3"
+                    height="5"
+                    rx="0.5"
+                    fill="currentColor"
+                    className="text-[#14171F] dark:text-white"
+                  />
+                  <rect
+                    x="4.5"
+                    y="4"
+                    width="3"
+                    height="7"
+                    rx="0.5"
+                    fill="currentColor"
+                    className="text-[#14171F] dark:text-white"
+                  />
+                  <rect
+                    x="9"
+                    y="2"
+                    width="3"
+                    height="9"
+                    rx="0.5"
+                    fill="currentColor"
+                    className="text-[#14171F] dark:text-white"
+                  />
+                  <rect
+                    x="13.5"
+                    y="0"
+                    width="3"
+                    height="11"
+                    rx="0.5"
+                    fill="currentColor"
+                    className="text-[#14171F] dark:text-white"
+                  />
+                </svg>
+                {/* Wifi */}
+                <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
+                  <path
+                    d="M7.5 9.5C8.05 9.5 8.5 9.05 8.5 8.5C8.5 7.95 8.05 7.5 7.5 7.5C6.95 7.5 6.5 7.95 6.5 8.5C6.5 9.05 6.95 9.5 7.5 9.5Z"
+                    fill="currentColor"
+                    className="text-[#14171F] dark:text-white"
+                  />
+                  <path
+                    d="M4.5 6.2C5.3 5.5 6.35 5 7.5 5C8.65 5 9.7 5.5 10.5 6.2"
+                    stroke="currentColor"
+                    strokeWidth="1.3"
+                    strokeLinecap="round"
+                    className="text-[#14171F] dark:text-white"
+                  />
+                  <path
+                    d="M2 3.6C3.55 2.15 5.45 1.3 7.5 1.3C9.55 1.3 11.45 2.15 13 3.6"
+                    stroke="currentColor"
+                    strokeWidth="1.3"
+                    strokeLinecap="round"
+                    className="text-[#14171F] dark:text-white"
+                  />
+                </svg>
+                {/* Battery */}
+                <svg width="24" height="12" viewBox="0 0 24 12" fill="none">
+                  <rect
+                    x="0.5"
+                    y="0.5"
+                    width="20"
+                    height="11"
+                    rx="2.5"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    className="text-[#14171F] dark:text-white"
+                  />
+                  <rect
+                    x="2"
+                    y="2"
+                    width="17"
+                    height="8"
+                    rx="1.3"
+                    fill="currentColor"
+                    className="text-[#14171F] dark:text-white"
+                  />
+                  <path
+                    d="M22 4V8C22.8 7.6 23.3 6.85 23.3 6C23.3 5.15 22.8 4.4 22 4Z"
+                    fill="currentColor"
+                    className="text-[#14171F] dark:text-white"
+                  />
+                </svg>
+              </div>
+            </div>
+
             {/* Mini app content */}
             <div className="px-6 pt-14 pb-8 h-full flex flex-col">
               {/* Mini header */}
