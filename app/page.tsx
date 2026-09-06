@@ -125,7 +125,7 @@ export default async function Home() {
                     y="6"
                     width="3"
                     height="5"
-                    rx="0.5"
+                    rx="1.5"
                     fill="currentColor"
                     className="text-[#14171F] dark:text-white"
                   />
@@ -134,7 +134,7 @@ export default async function Home() {
                     y="4"
                     width="3"
                     height="7"
-                    rx="0.5"
+                    rx="1.5"
                     fill="currentColor"
                     className="text-[#14171F] dark:text-white"
                   />
@@ -143,7 +143,7 @@ export default async function Home() {
                     y="2"
                     width="3"
                     height="9"
-                    rx="0.5"
+                    rx="1.5"
                     fill="currentColor"
                     className="text-[#14171F] dark:text-white"
                   />
@@ -152,11 +152,12 @@ export default async function Home() {
                     y="0"
                     width="3"
                     height="11"
-                    rx="0.5"
+                    rx="1.5"
                     fill="currentColor"
                     className="text-[#14171F] dark:text-white"
                   />
                 </svg>
+                {/* Wifi */}
                 {/* Wifi */}
                 <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
                   <path
@@ -180,29 +181,34 @@ export default async function Home() {
                   />
                 </svg>
                 {/* Battery */}
-                <svg width="24" height="12" viewBox="0 0 24 12" fill="none">
+                <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+                  {/* outer shell */}
                   <rect
                     x="0.5"
                     y="0.5"
-                    width="20"
+                    width="21"
                     height="11"
-                    rx="2.5"
+                    rx="3.3"
                     stroke="currentColor"
+                    strokeOpacity="0.4"
                     strokeWidth="1"
                     className="text-[#14171F] dark:text-white"
                   />
+                  {/* fill level — swap width for charge % (e.g. 50% -> width=8.5) */}
                   <rect
                     x="2"
                     y="2"
-                    width="17"
+                    width="18"
                     height="8"
-                    rx="1.3"
+                    rx="2"
                     fill="currentColor"
                     className="text-[#14171F] dark:text-white"
                   />
+                  {/* cap/nub */}
                   <path
-                    d="M22 4V8C22.8 7.6 23.3 6.85 23.3 6C23.3 5.15 22.8 4.4 22 4Z"
+                    d="M23 4.2V7.8C23.9 7.45 24.5 6.6 24.5 6C24.5 5.4 23.9 4.55 23 4.2Z"
                     fill="currentColor"
+                    fillOpacity="0.4"
                     className="text-[#14171F] dark:text-white"
                   />
                 </svg>
