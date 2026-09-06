@@ -220,7 +220,7 @@ export default async function Home() {
               {/* Mini header */}
               <div className="flex items-center mb-8">
                 <img
-                  src="/logo7.png"
+                  src="/logo8.png"
                   alt="Inkwell logo"
                   className="w-auto h-15"
                 />
