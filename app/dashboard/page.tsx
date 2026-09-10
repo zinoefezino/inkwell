@@ -11,9 +11,11 @@ import {
   InboxIcon,
   PlusSignIcon,
   ArrowLeft01Icon,
+  Download01Icon,
 } from "@hugeicons/core-free-icons";
 import Link from "next/link";
 import Header from "@/components/Header";
+import { downloadAsDocx, downloadAsPdf } from "@/lib/export";
 
 type GenType = "proposal" | "cv";
 
@@ -341,18 +343,70 @@ export default function Dashboard() {
                             {excerpt(selected.posting, 160)}
                           </p>
                         </div>
-                        <button
-                          onClick={handleCopy}
-                          className="flex items-center gap-2 text-xs text-[#3B4E90] dark:text-[#8FA3E0] hover:opacity-70 shrink-0 mt-1 py-1"
-                        >
-                          <HugeiconsIcon
-                            icon={copied ? Tick01Icon : Copy01Icon}
-                            size={18}
-                            color="currentColor"
-                            strokeWidth={1.5}
-                          />
-                          {copied ? "Copied" : "Copy"}
-                        </button>
+                        <div className="flex items-center gap-3 shrink-0 mt-1 flex-wrap justify-end">
+                          <button
+                            onClick={handleCopy}
+                            className="flex items-center gap-1.5 text-xs text-[#3B4E90] dark:text-[#8FA3E0] hover:opacity-70 py-1"
+                          >
+                            <HugeiconsIcon
+                              icon={copied ? Tick01Icon : Copy01Icon}
+                              size={16}
+                              color="currentColor"
+                              strokeWidth={1.5}
+                            />
+                            {copied ? "Copied" : "Copy"}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              if (!selected) return;
+                              const base =
+                                selected.type === "proposal"
+                                  ? "proposal"
+                                  : "cv";
+                              downloadAsDocx(selected.output, base, {
+                                subtitle:
+                                  selected.type === "proposal"
+                                    ? "Proposal"
+                                    : "CV",
+                              });
+                            }}
+                            className="flex items-center gap-1.5 text-xs text-[#3B4E90] dark:text-[#8FA3E0] hover:opacity-70 py-1"
+                          >
+                            <HugeiconsIcon
+                              icon={Download01Icon}
+                              size={16}
+                              color="currentColor"
+                              strokeWidth={1.5}
+                            />
+                            Word
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              if (!selected) return;
+                              const base =
+                                selected.type === "proposal"
+                                  ? "proposal"
+                                  : "cv";
+                              downloadAsPdf(selected.output, base, {
+                                subtitle:
+                                  selected.type === "proposal"
+                                    ? "Proposal"
+                                    : "CV",
+                              });
+                            }}
+                            className="flex items-center gap-1.5 text-xs text-[#3B4E90] dark:text-[#8FA3E0] hover:opacity-70 py-1"
+                          >
+                            <HugeiconsIcon
+                              icon={Download01Icon}
+                              size={16}
+                              color="currentColor"
+                              strokeWidth={1.5}
+                            />
+                            PDF
+                          </button>
+                        </div>
                       </div>
                       <div className="border border-[#E4E4E0] dark:border-[#2A2E38] rounded-md p-4 md:p-6 min-h-75 md:min-h-95 max-h-[60vh] overflow-y-auto whitespace-pre-wrap text-sm md:text-[14.5px] leading-[1.7]">
                         {selected.output}
