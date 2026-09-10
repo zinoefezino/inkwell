@@ -147,7 +147,7 @@ function ProposalMockCard() {
       full: string,
       setter: (v: string) => void,
       field: TypingField,
-      runId: number
+      runId: number,
     ) => {
       setTypingField(field);
       let i = 0;
@@ -165,7 +165,7 @@ function ProposalMockCard() {
       setTypingField(null);
       return true;
     },
-    [sleep]
+    [sleep],
   );
 
   const goTo = useCallback(
@@ -193,7 +193,7 @@ function ProposalMockCard() {
       setVisible(false);
       fadeTimerRef.current = window.setTimeout(apply, FADE_MS);
     },
-    [clearGenFade]
+    [clearGenFade],
   );
 
   // Pause-aware generating → result
@@ -595,7 +595,7 @@ export default function FeatureProposals() {
             What Inkwell does
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-[#F2F2EE] leading-[1.15] mb-4">
-            A proposal that matches the posting — not a template with blanks.
+            A proposal that matches the posting, not a template with blanks.
           </h2>
           <p className="text-[15.5px] leading-relaxed text-[#6B6B63] dark:text-[#B5B5AC] mb-7 max-w-md">
             Inkwell reads the job and writes in your voice, leading with the

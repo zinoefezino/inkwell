@@ -463,7 +463,7 @@ function CvMockCard() {
                   The posting
                 </p>
                 <p className="text-[10px] text-[#8A8A82] dark:text-[#9A9A92] mb-1.5">
-                  Paste the raw job description text — not a link.
+                  Paste the raw job description text not a link.
                 </p>
                 <div
                   className={`w-full rounded-md border p-3 text-[11px] leading-relaxed text-[#4A4A44] dark:text-[#D8D8D2] max-h-[52px] overflow-hidden min-h-[40px] ${
@@ -610,7 +610,7 @@ export default function FeatureCvs() {
           </h2>
           <p className="text-[15.5px] leading-relaxed text-[#6B6B63] dark:text-[#B5B5AC] mb-7 max-w-md">
             Upload or paste your CV. Inkwell reorders and reframes what you
-            already wrote so the right experience leads — without fabricating a
+            already wrote so the right experience leads without fabricating a
             single line.
           </p>
           <ul className="space-y-2.5">
