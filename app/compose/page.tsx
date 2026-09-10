@@ -103,7 +103,7 @@ export default function Compose() {
     <div className="min-h-screen bg-white dark:bg-[#14171F] text-[#14171F] dark:text-[#F2F2EE]">
       <Header />
 
-      <main className="max-w-6xl mx-auto px-8 py-10">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 md:py-10">
         <Link
           href="/dashboard"
           className="inline-flex items-center gap-1.5 text-sm text-[#8A8A82] dark:text-[#9A9A92] hover:text-[#3B4E90] dark:hover:text-[#8FA3E0] transition-colors mb-6"
@@ -258,7 +258,7 @@ export default function Compose() {
                   />
                 )}
               </span>
-              {loading ? "Drafting..." : "Seal & draft"}
+              {loading ? "Creating..." : "Create proposal"}
             </button>
             {error && (
               <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
@@ -328,7 +328,7 @@ export default function Compose() {
               ) : (
                 <span className="text-[#B9B9AF] dark:text-[#6B6B63] font-sans text-sm not-italic">
                   Your proposal will take shape here once you paste a posting
-                  and seal it.
+                  and create it.
                 </span>
               )}
             </div>

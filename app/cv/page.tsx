@@ -141,7 +141,7 @@ export default function TailorCV() {
     <div className="min-h-screen bg-white dark:bg-[#14171F] text-[#14171F] dark:text-[#F2F2EE]">
       <Header />
 
-      <main className="max-w-6xl mx-auto px-8 py-10">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 md:py-10">
         <Link
           href="/dashboard"
           className="inline-flex items-center gap-1.5 text-sm text-[#8A8A82] dark:text-[#9A9A92] hover:text-[#3B4E90] dark:hover:text-[#8FA3E0] transition-colors mb-6"
@@ -168,7 +168,7 @@ export default function TailorCV() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Your name"
-                className="w-full border border-[#E4E4E0] dark:border-[#2A2E38] rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#2B3A67]/30 dark:focus:ring-[#8FA3E0]/30"
+                className="w-full border border-[#E4E4E0] dark:border-[#2A2E38] rounded px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#3B4E90]/30 dark:focus:ring-[#8FA3E0]/30"
               />
             </div>
             <div>
@@ -182,7 +182,7 @@ export default function TailorCV() {
                     onClick={() => setMode("paste")}
                     className={`text-xs px-3 py-1 rounded-full transition-colors ${
                       mode === "paste"
-                        ? "bg-[#2B3A67] text-white"
+                        ? "bg-[#3B4E90] text-white"
                         : "text-[#6B6B63] dark:text-[#B5B5AC]"
                     }`}
                   >
@@ -216,7 +216,7 @@ export default function TailorCV() {
                   />
                   {attempted && cvMissing && (
                     <p className="text-[12px] text-red-600 dark:text-red-400 mt-1">
-                      Add your CV text (paste or upload) before tailoring.
+                      Add your CV text (paste or upload) before creating.
                     </p>
                   )}
                 </>
@@ -258,7 +258,7 @@ export default function TailorCV() {
                   </p>
                   {cvText && fileName && !extracting && (
                     <p className="text-xs text-[#C9A227]">
-                      Text extracted — ready to tailor
+                      Text extracted — ready to create
                     </p>
                   )}
                 </div>
@@ -315,7 +315,7 @@ export default function TailorCV() {
                   />
                 )}
               </span>
-              {loading ? "Tailoring..." : "Seal & tailor"}
+              {loading ? "Creating..." : "Create CV"}
             </button>
             {error && (
               <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
